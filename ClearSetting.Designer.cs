@@ -23,6 +23,7 @@ namespace UI
         /// </summary>
         //private System.ComponentModel.IContainer components = null;
         MainForm mf;
+        string referenceImage;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -30,27 +31,6 @@ namespace UI
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            /*
-            //下面是删除左侧图片显示框中的所有图片，当有具体清除方案后可直接使用下面方法删除对应控件（如删除第i张图片）
-            int n = MainForm.tot;//获取左侧显示框控件数目（全部是包含picturebox以及label的tablepannel）
-            string imagePath = "";
-
-            int i = n - (int)((double)n * clearRatioBar.Value / 100);
-            for (; i < n; i++)
-            {
-                imagePath = MainForm.path_name[i];
-                if (File.Exists(imagePath))
-                {
-                    FileSystem.DeleteFile(imagePath, UIOption.OnlyErrorDialogs, RecycleOption.SendToRecycleBin);
-                }
-                MainForm.state[i] = true;
-            }
-            mf.delete();
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
-            */
             base.Dispose(disposing);
         }
 
@@ -65,16 +45,17 @@ namespace UI
             this.clearRatioBar = new System.Windows.Forms.TrackBar();
             this.text = new System.Windows.Forms.Label();
             this.ratio = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.confirm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.clearRatioBar)).BeginInit();
             this.SuspendLayout();
             // 
             // clearRatioBar
             // 
-            this.clearRatioBar.Location = new System.Drawing.Point(143, 82);
+            this.clearRatioBar.Location = new System.Drawing.Point(191, 109);
+            this.clearRatioBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.clearRatioBar.Maximum = 100;
             this.clearRatioBar.Name = "clearRatioBar";
-            this.clearRatioBar.Size = new System.Drawing.Size(104, 45);
+            this.clearRatioBar.Size = new System.Drawing.Size(139, 45);
             this.clearRatioBar.TabIndex = 0;
             this.clearRatioBar.Value = 50;
             this.clearRatioBar.Scroll += new System.EventHandler(this.clearRatioBar_Scroll);
@@ -83,7 +64,8 @@ namespace UI
             // 
             this.text.AutoSize = true;
             this.text.Font = new System.Drawing.Font("宋体", 10F);
-            this.text.Location = new System.Drawing.Point(48, 92);
+            this.text.Location = new System.Drawing.Point(64, 123);
+            this.text.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.text.Name = "text";
             this.text.Size = new System.Drawing.Size(77, 14);
             this.text.TabIndex = 1;
@@ -93,31 +75,35 @@ namespace UI
             // 
             this.ratio.AutoSize = true;
             this.ratio.Font = new System.Drawing.Font("宋体", 10F);
-            this.ratio.Location = new System.Drawing.Point(267, 92);
+            this.ratio.Location = new System.Drawing.Point(356, 123);
+            this.ratio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.ratio.Name = "ratio";
             this.ratio.Size = new System.Drawing.Size(28, 14);
             this.ratio.TabIndex = 2;
             this.ratio.Text = "50%";
             // 
-            // button1
+            // confirm
             // 
-            this.button1.Location = new System.Drawing.Point(315, 84);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(70, 30);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "确定";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.confirm.Location = new System.Drawing.Point(420, 112);
+            this.confirm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.confirm.Name = "confirm";
+            this.confirm.Size = new System.Drawing.Size(93, 40);
+            this.confirm.TabIndex = 3;
+            this.confirm.Text = "确定";
+            this.confirm.UseVisualStyleBackColor = true;
+            this.confirm.Click += new System.EventHandler(this.confirm_Click);
             // 
             // ClearSetting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(434, 211);
-            this.Controls.Add(this.button1);
+            this.ClientSize = new System.Drawing.Size(579, 281);
+            this.Controls.Add(this.confirm);
             this.Controls.Add(this.ratio);
             this.Controls.Add(this.text);
             this.Controls.Add(this.clearRatioBar);
+            this.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ClearSetting";
             this.Text = "ClearSetting";
             ((System.ComponentModel.ISupportInitialize)(this.clearRatioBar)).EndInit();
@@ -131,6 +117,6 @@ namespace UI
         private System.Windows.Forms.TrackBar clearRatioBar;
         private System.Windows.Forms.Label text;
         private System.Windows.Forms.Label ratio;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button confirm;
     }
 }

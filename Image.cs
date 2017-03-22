@@ -23,13 +23,24 @@ namespace demo1
         public double grade_none; //图像无参考得分
         public double grade_full; //图像全参考得分
         public int[, ,] rgb; //图像rgb
+        public int[,] gray; //图像灰度值
+        public int[,] lbp; //图像lbp值
         public bool state_none; //图片是否已经无参考评分
         public bool state_full; //图片是否已经全参考评分
+        public int[] power;
+        public int[] value;
+        public int[] sum;
+
+        public unsafe Pic(Bitmap image)
+        {
+            this.image = image;
+        }
 
         //构造方法，对图像信息初始化
-        public unsafe Pic(String _path)
+        public unsafe Pic(String _path,String _name)
         {
             path = _path;
+            name = _name;
             image = new Bitmap(_path);
             data = image.LockBits(new Rectangle(0, 0, image.Width, image.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb);
             byte* ptr = (byte*)(data.Scan0);
@@ -39,6 +50,7 @@ namespace demo1
             int extra = stribe - width * 3;
             rgb = new int[3, height, width];
             //指针操作图像，C#里处理图像最快的方法，将图像的rgb值先读入一个数组
+            gray = new int[height, width];
             for (int i = 0; i < height; i++)
             {
                 for (int k = 0; k < width; k++, ptr += 3)
@@ -46,26 +58,107 @@ namespace demo1
                     rgb[0, i, k] = *(ptr);
                     rgb[1, i, k] = *(ptr + 1);
                     rgb[2, i, k] = *(ptr + 2);
+                    gray[i, k] = (int)(rgb[0, i, k] * 0.114 + rgb[1, i, k] * 0.587 + rgb[2, i, k] * 0.299);
                 }
                 ptr += extra;
             }
             image.UnlockBits(data);
             state_none = false;
             state_full = false;
+            power = new int[] { 1, 2, 4, 8, 16, 32, 64, 128, 256 };
+            init();
         }
 
-        //图像评分，以后再实现
-        public void get_grade()
+        public void init()
         {
-            for (int j = 0; j < height; j++)
+            value = new int[256];
+            sum = new int[59];
+            int index = 0;
+            int cnt;
+            int s;
+            int pre = -1;
+            for (int i = 0; i < 256; i++)
             {
-                for (int k = 0; k < width; k++)
+                s = 0;
+                cnt = 0;
+                for (int k = 0; k < 8; k++)
                 {
-                    /*
-                           评分函数，等师姐给算法再实现
-                    */
+                    if ((i & (1 << k)) != 0)
+                    {
+                        if (pre == 0)
+                        {
+                            cnt++;
+                            if (cnt == 3)
+                            {
+                                break;
+                            }
+                        }
+                        s += 1 << k;
+                        pre = 1;
+                    }
+                    else
+                    {
+                        if (pre == 1)
+                        {
+                            cnt++;
+                            if (cnt == 3)
+                            {
+                                break;
+                            }
+                        }
+                        pre = 0;
+                    }
+                }
+                if(cnt == 3)
+                {
+                    value[i] = 58;
+                }
+                else
+                {
+                    value[i] = index++;
                 }
             }
+            for(int i = 0; i < 58;i++)
+            {
+                sum[i] = 0;
+            }
+        }
+
+        public void getLBP()
+        {
+            int tempHeight = height - 1;
+            int tempWidth = width - 1;
+            int tempValue;
+            for (int i = 1; i < tempHeight; i++)
+            {
+                for (int k = 1; k < tempWidth; k++)
+                {
+                    tempValue = 0;
+                    if (gray[i, k] > gray[i - 1, k - 1]) tempValue += 1;
+                    if (gray[i, k] > gray[i - 1, k]) tempValue += 2;
+                    if (gray[i, k] > gray[i - 1, k + 1]) tempValue += 4;
+                    if (gray[i, k] > gray[i, k + 1]) tempValue += 8;
+                    if (gray[i, k] > gray[i + 1, k + 1]) tempValue += 16;
+                    if (gray[i, k] > gray[i + 1, k]) tempValue += 32;
+                    if (gray[i, k] > gray[i + 1, k - 1]) tempValue += 64;
+                    if (gray[i, k] > gray[i, k - 1]) tempValue += 128;
+                    lbp[i, k] = value[tempValue];
+                    sum[lbp[i, k]]++;
+                }
+            }
+        }
+
+        public int LBPdiffer(Pic image2)
+        {
+            int s = 0;
+            for(int i = 0;i < 58;i++)
+            {
+                if(sum[i] != image2.sum[i])
+                {
+                    s++;
+                }
+            }
+            return s;
         }
 
         //邻近点缩放，将缩放后的RGB放到一个数组中，缩放大小为height*width
@@ -90,21 +183,19 @@ namespace demo1
         }
 
         //全参考比较两张图片的相似度，psnr值越小相差越大，两张图片一样时psnr为无穷
-        public double psnr(Pic image2, int height, int width)
+        public double psnr(Pic image2)
         {
             int mse = 0;
             int temp;
-            int[, ,] d1 = resize(height, width);
-            int[, ,] d2 = image2.resize(height, width);
             for (int i = 0; i < height; i++)
             {
                 for (int k = 0; k < width; k++)
                 {
-                    temp = d1[0, i, k] - d2[0, i, k];
+                    temp = rgb[0, i, k] - image2.rgb[0, i, k];
                     mse += temp * temp;
-                    temp = d1[1, i, k] - d2[1, i, k];
+                    temp = rgb[1, i, k] - image2.rgb[1, i, k];
                     mse += temp * temp;
-                    temp = d1[2, i, k] - d2[2, i, k];
+                    temp = rgb[2, i, k] - image2.rgb[2, i, k];
                     mse += temp * temp;
                 }
             }
@@ -164,7 +255,7 @@ namespace demo1
         }
 
         //图像压缩，quality为质量分数，取值范围为[0,100]，size为压缩百分比，取值为(0，100]
-        public Image compress(int quality,int size,string format)
+        public Image compress(int quality, int size, string format)
         {
             int _height = height * size / 100; 
             int _witdh = width * size / 100;

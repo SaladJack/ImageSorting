@@ -20,10 +20,5 @@ namespace UI
         {
             InitializeComponent();
         }
-
-        private void sortingProgress_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

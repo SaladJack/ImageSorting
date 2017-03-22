@@ -61,7 +61,6 @@
             this.Controls.Add(this.sortingProgressBar);
             this.Name = "SortingProgress";
             this.Text = "排序中";
-            this.Load += new System.EventHandler(this.sortingProgress_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
