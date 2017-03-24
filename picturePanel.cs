@@ -17,8 +17,19 @@ namespace UI
     {
         public PictureBox image;
         public Label image_name;
+        public int id;
         int w;
         int h;
+        public picturePanel(int id)
+        {
+            this.Dock = DockStyle.Fill;
+            image = new PictureBox();
+            image_name = new Label();
+            image.SizeMode = PictureBoxSizeMode.StretchImage;
+            this.Resize += resize;
+            this.id = id;
+        }
+
         public picturePanel()
         {
             this.Dock = DockStyle.Fill;
@@ -30,7 +41,7 @@ namespace UI
 
         public void init(Bitmap bitmap,string name)
         {
-            if(bitmap==null)
+            if(bitmap == null)
             {
                 return;
             }
@@ -42,16 +53,13 @@ namespace UI
             image.Width = (int)(w * F);
 
             image.Image = bitmap;
-            image_name.Height = 15;
             image_name.Width = image.Width;
             image_name.TextAlign = ContentAlignment.MiddleCenter;
-            image_name.Font = new Font("宋体", 10);
             image_name.Text = name;
             image.Anchor = AnchorStyles.None;
-            image_name.Anchor = AnchorStyles.None;
+            image_name.Dock = DockStyle.Bottom;
 
             image.Location = new Point((this.Width - image.Width) / 2, (this.Height - 15 - image.Height) / 2);
-            image_name.Location = new Point(image.Location.X, image.Location.Y + image.Height + 5);
             this.Controls.Add(image);
             this.Controls.Add(image_name);
         }
@@ -61,11 +69,9 @@ namespace UI
             double F = (((double)this.Width - 15) / w) < ((double)(this.Height - 25) / h) ? ((double)this.Width - 15) / w : (double)(this.Height - 25) / h;
             image.Height = (int)(h * F);
             image.Width = (int)(w * F);
-            image_name.Height = 15;
             image_name.Width = image.Width;
             image_name.TextAlign = ContentAlignment.MiddleCenter;
             image.Location = new Point((this.Width - image.Width) / 2, (this.Height - 15 - image.Height) / 2);
-            image_name.Location = new Point(image.Location.X, image.Location.Y + image.Height + 5);
         }
     }
 }

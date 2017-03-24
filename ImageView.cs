@@ -12,45 +12,57 @@ namespace UI
 {
     public partial class ImageView : Form
     {
+        private string[] picList;
         private int position;
-        public ImageView()
+        public ImageView(string[] picList,int position)
         {
+            this.picList = picList;
+            this.position = position;
             InitializeComponent();
-           
         }
         
-        //显示第一张图片
+        //显示双击的图片
         private void ImageView_Load(object sender, EventArgs e)
         {
             //控制图片大小以及按钮大小
+           
             int formWidth=this.Width;
             int formHeight=this.Height;
             int height = (int)(((double)formHeight - 50) / 2-25);
-            position = 0;
-            string path = MainForm.path_name[position];
+            string path = picList[position];
             this.tableLayoutPanel1.Width = formWidth;
             this.tableLayoutPanel1.Height = formHeight;
-            this.imageButton1.Margin = new Padding(0, height, 0, 0);
-            this.imageButton1.Height = 50;
-            this.imageButton2.Margin = new Padding(0, height, 0, 0);
-            this.imageButton2.Height = 50;
+            this.leftButton.Margin = new Padding(0, height, 0, 0);
+            this.leftButton.Height = 50;
+            this.rightButton.Margin = new Padding(0, height, 0, 0);
+            this.rightButton.Height = 50;
           //  this.imageButton1.Height = formHeight;
           //  this.imageButton2.Height= formHeight;
             
 
             //窗口名称是当前图片名称
-            string name= "";
-            name = path;
-            string[] sArray = path.Split( '\\');
-            name = sArray[sArray.Length - 1];
-            this.Text = name;
-
-            //将第一张图片添加到picturebox
-            PictureBox image = this.pictureBox1;
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            image.Image = Image.FromStream(fs);
-            this.imageButton1.Visible = false;
+            this.Text = MainForm.picInfo[path].name;
             
+            //将所点击的图片添加到picturebox
+            PictureBox image = this.pictureBox1;
+            image.Image = MainForm.picInfo[path].image;
+            //左右图片按钮显示
+            if (position == 0)
+            {
+                this.leftButton.Visible = false;
+            }
+            else
+            {
+                this.leftButton.Visible = true;
+            }
+            if (position == picList.Length - 1)
+            {
+                this.rightButton.Visible = false;
+            }
+            else
+            {
+                this.rightButton.Visible = true;
+            }
         }
 
         //窗口大小自适应
@@ -58,16 +70,16 @@ namespace UI
         {
             int formWidth = this.Width;
             int formHeight = this.Height;
-           int height=(int)(((double)formHeight-50)/2-25);
+            int height=(int)(((double)formHeight - 50) / 2 - 25);
             //设置左部整个pannel与窗体大小一致，并设置两个上下按钮高度与窗口高度一致
             this.tableLayoutPanel1.Location = new Point(0, 0);
             this.tableLayoutPanel1.Width = formWidth;
             this.tableLayoutPanel1.Height = formHeight;
             
-            this.imageButton1.Margin = new Padding(0, height, 0, 0);
-            this.imageButton1.Height = 50;
-            this.imageButton2.Margin = new Padding(0, height, 0, 0);
-            this.imageButton2.Height = 50;
+            this.leftButton.Margin = new Padding(0, height, 0, 0);
+            this.leftButton.Height = 50;
+            this.rightButton.Margin = new Padding(0, height, 0, 0);
+            this.rightButton.Height = 50;
             //this.imageButton2.Height = formHeight;
  
         }
@@ -78,68 +90,51 @@ namespace UI
             //position指第几张图片，0~length-1
             if (position < 0)
             {
-                this.imageButton1.Visible = false;
+                this.leftButton.Visible = false;
             }
             else
             {
                 position--;
-                if (position < MainForm.tot-1)
-                    this.imageButton2.Visible = true;
-                string path = MainForm.path_name[position];
-                string name = "";
-                name = path;
-                string[] sArray = path.Split('\\');
-                name = sArray[sArray.Length - 1];
-                this.Text = name;
+                if (position < picList.Length - 1)
+                {
+                    this.rightButton.Visible = true;
+                }
+                string path = picList[position];
+                this.Text = MainForm.picInfo[path].name;
                 PictureBox image = this.pictureBox1;
               
-                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-                image.Image = Image.FromStream(fs);
+                image.Image = MainForm.picInfo[path].image;
                 if (position <= 0)
                 {
-                    this.imageButton1.Visible = false;
-
+                    this.leftButton.Visible = false;
                 }
             }
-           }
+        }
 
         //下一张图片
         private void imageButton2_Click(object sender, EventArgs e)
         {
-            
-            if(position>=MainForm.tot-1)
+            if(position >= picList.Length - 1)
             {
-                this.imageButton2.Visible=false;
-            }else
+                this.rightButton.Visible = false;
+            }
+            else
             {
                 position++;
-                if(position>=0)
-                    this.imageButton1.Visible = true;
-                string path = MainForm.path_name[position];
-                string name = "";
-                name = path;
-                string[] sArray = path.Split('\\');
-                name = sArray[sArray.Length - 1];
-                this.Text = name;
+                if (position >= 0)
+                {
+                    this.leftButton.Visible = true;
+                }
+                string path = picList[position];
+                this.Text = MainForm.picInfo[path].name;
                 PictureBox image = this.pictureBox1;
                 
-                FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-                image.Image = Image.FromStream(fs);
-                if (position>=MainForm.tot-1)
+                image.Image = MainForm.picInfo[path].image;
+                if (position >=picList.Length - 1)
                 {
-                    this.imageButton2.Visible = false;
+                    this.rightButton.Visible = false;
                 }
             }
-           
-
         }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-       
-
     }
 }

@@ -35,11 +35,12 @@ namespace UI
             this.skinToolTip1 = new CCWin.SkinToolTip(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.setting = new LT.WinForm.ImageButton.ImageButton();
+            this.aboutUs = new LT.WinForm.ImageButton.ImageButton();
             this.imageCompress = new LT.WinForm.ImageButton.ImageButton();
             this.imageSort = new LT.WinForm.ImageButton.ImageButton();
             this.imageClear = new LT.WinForm.ImageButton.ImageButton();
             this.imageCompare = new LT.WinForm.ImageButton.ImageButton();
-            this.settingPanel = new LT.WinForm.ImageButton.ImageButton();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.imageSortPanel = new System.Windows.Forms.TableLayoutPanel();
             this.imageSort_full = new LT.WinForm.ImageButton.ImageButton();
@@ -51,13 +52,15 @@ namespace UI
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.deleteImage = new LT.WinForm.ImageButton.ImageButton();
             this.addImageSet = new LT.WinForm.ImageButton.ImageButton();
-            this.addImage = new LT.WinForm.ImageButton.ImageButton();
+            this.selectALL = new LT.WinForm.ImageButton.ImageButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.searchButton = new LT.WinForm.ImageButton.ImageButton();
-            this.settingButton = new LT.WinForm.ImageButton.ImageButton();
+            this.selectionMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.item1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.item2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -71,6 +74,7 @@ namespace UI
             this.imageClearPanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.selectionMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // skinToolTip1
@@ -103,33 +107,65 @@ namespace UI
             // 
             this.splitContainer1.Panel2.AllowDrop = true;
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1189, 622);
-            this.splitContainer1.SplitterDistance = 85;
+            this.splitContainer1.Size = new System.Drawing.Size(1189, 700);
+            this.splitContainer1.SplitterDistance = 95;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(200)))), ((int)(((byte)(249)))));
-            this.tableLayoutPanel1.ColumnCount = 5;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.36364F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.36364F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.36364F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.36364F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 34.54546F));
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 16.5F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel1.Controls.Add(this.setting, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.aboutUs, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageCompress, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageSort, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageClear, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.imageCompare, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.settingPanel, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 85F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1189, 85);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1189, 95);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // setting
+            // 
+            this.setting.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.setting.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.setting.ButtonImage = global::UI.Properties.Resources.settings;
+            this.setting.ButtonText = "";
+            this.setting.Location = new System.Drawing.Point(954, 10);
+            this.setting.Margin = new System.Windows.Forms.Padding(4);
+            this.setting.MouseClickImage = global::UI.Properties.Resources.settings;
+            this.setting.MouseOverImage = global::UI.Properties.Resources.settings;
+            this.setting.Name = "setting";
+            this.setting.Size = new System.Drawing.Size(110, 75);
+            this.setting.TabIndex = 6;
+            this.setting.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.settingButton_Click);
+            // 
+            // aboutUs
+            // 
+            this.aboutUs.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.aboutUs.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.aboutUs.ButtonImage = global::UI.Properties.Resources.person;
+            this.aboutUs.ButtonText = "";
+            this.aboutUs.Location = new System.Drawing.Point(1072, 5);
+            this.aboutUs.Margin = new System.Windows.Forms.Padding(4);
+            this.aboutUs.MouseClickImage = global::UI.Properties.Resources.person;
+            this.aboutUs.MouseOverImage = global::UI.Properties.Resources.person;
+            this.aboutUs.Name = "aboutUs";
+            this.aboutUs.Size = new System.Drawing.Size(85, 85);
+            this.aboutUs.TabIndex = 5;
+            this.aboutUs.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.aboutUs_Click);
             // 
             // imageCompress
             // 
@@ -137,11 +173,12 @@ namespace UI
             this.imageCompress.ButtonImage = global::UI.Properties.Resources.compress_normal;
             this.imageCompress.ButtonText = "";
             this.imageCompress.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageCompress.Location = new System.Drawing.Point(197, 3);
+            this.imageCompress.Location = new System.Drawing.Point(200, 4);
+            this.imageCompress.Margin = new System.Windows.Forms.Padding(4);
             this.imageCompress.MouseClickImage = global::UI.Properties.Resources.compress_selected;
             this.imageCompress.MouseOverImage = global::UI.Properties.Resources.compress_selected;
             this.imageCompress.Name = "imageCompress";
-            this.imageCompress.Size = new System.Drawing.Size(188, 79);
+            this.imageCompress.Size = new System.Drawing.Size(188, 87);
             this.imageCompress.TabIndex = 4;
             this.imageCompress.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageCompress_Click);
             // 
@@ -151,11 +188,12 @@ namespace UI
             this.imageSort.ButtonImage = global::UI.Properties.Resources.sort_normal2;
             this.imageSort.ButtonText = "";
             this.imageSort.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageSort.Location = new System.Drawing.Point(3, 3);
+            this.imageSort.Location = new System.Drawing.Point(4, 4);
+            this.imageSort.Margin = new System.Windows.Forms.Padding(4);
             this.imageSort.MouseClickImage = global::UI.Properties.Resources.sort_selected;
             this.imageSort.MouseOverImage = global::UI.Properties.Resources.sort_selected;
             this.imageSort.Name = "imageSort";
-            this.imageSort.Size = new System.Drawing.Size(188, 79);
+            this.imageSort.Size = new System.Drawing.Size(188, 87);
             this.imageSort.TabIndex = 0;
             this.imageSort.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageSort_Click);
             // 
@@ -165,11 +203,12 @@ namespace UI
             this.imageClear.ButtonImage = global::UI.Properties.Resources.clean_normal;
             this.imageClear.ButtonText = "";
             this.imageClear.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageClear.Location = new System.Drawing.Point(391, 3);
+            this.imageClear.Location = new System.Drawing.Point(396, 4);
+            this.imageClear.Margin = new System.Windows.Forms.Padding(4);
             this.imageClear.MouseClickImage = global::UI.Properties.Resources.clean_selected;
             this.imageClear.MouseOverImage = global::UI.Properties.Resources.clean_selected;
             this.imageClear.Name = "imageClear";
-            this.imageClear.Size = new System.Drawing.Size(188, 79);
+            this.imageClear.Size = new System.Drawing.Size(188, 87);
             this.imageClear.TabIndex = 1;
             this.imageClear.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageClear_Click);
             // 
@@ -179,27 +218,14 @@ namespace UI
             this.imageCompare.ButtonImage = global::UI.Properties.Resources.compare_normal;
             this.imageCompare.ButtonText = "";
             this.imageCompare.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageCompare.Location = new System.Drawing.Point(585, 3);
+            this.imageCompare.Location = new System.Drawing.Point(592, 4);
+            this.imageCompare.Margin = new System.Windows.Forms.Padding(4);
             this.imageCompare.MouseClickImage = global::UI.Properties.Resources.compare_selected;
             this.imageCompare.MouseOverImage = global::UI.Properties.Resources.compare_selected;
             this.imageCompare.Name = "imageCompare";
-            this.imageCompare.Size = new System.Drawing.Size(188, 79);
+            this.imageCompare.Size = new System.Drawing.Size(188, 87);
             this.imageCompare.TabIndex = 2;
             this.imageCompare.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageCompare_Click);
-            // 
-            // settingPanel
-            // 
-            this.settingPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.settingPanel.ButtonImage = global::UI.Properties.Resources.btn6;
-            this.settingPanel.ButtonText = "";
-            this.settingPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.settingPanel.Location = new System.Drawing.Point(779, 3);
-            this.settingPanel.MouseClickImage = global::UI.Properties.Resources.用户设置_高亮;
-            this.settingPanel.MouseOverImage = global::UI.Properties.Resources.用户设置_高亮;
-            this.settingPanel.Name = "settingPanel";
-            this.settingPanel.Size = new System.Drawing.Size(407, 79);
-            this.settingPanel.TabIndex = 3;
-            this.settingPanel.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.personalSetting_Click);
             // 
             // splitContainer2
             // 
@@ -216,7 +242,6 @@ namespace UI
             // 
             this.splitContainer2.Panel1.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.splitContainer2.Panel1.AllowDrop = true;
-            this.splitContainer2.Panel1.AutoScroll = true;
             this.splitContainer2.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(200)))), ((int)(((byte)(249)))));
             this.splitContainer2.Panel1.Controls.Add(this.imageSortPanel);
             this.splitContainer2.Panel1.Controls.Add(this.imageClearPanel);
@@ -229,7 +254,7 @@ namespace UI
             this.splitContainer2.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel2);
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(1189, 463);
+            this.splitContainer2.Size = new System.Drawing.Size(1189, 494);
             this.splitContainer2.SplitterDistance = 902;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
@@ -246,7 +271,7 @@ namespace UI
             this.imageSortPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.imageSortPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.imageSortPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.imageSortPanel.Size = new System.Drawing.Size(195, 161);
+            this.imageSortPanel.Size = new System.Drawing.Size(195, 165);
             this.imageSortPanel.TabIndex = 3;
             this.imageSortPanel.Visible = false;
             // 
@@ -261,7 +286,7 @@ namespace UI
             this.imageSort_full.MouseClickImage = global::UI.Properties.Resources.full_selected;
             this.imageSort_full.MouseOverImage = global::UI.Properties.Resources.full_selected;
             this.imageSort_full.Name = "imageSort_full";
-            this.imageSort_full.Size = new System.Drawing.Size(189, 74);
+            this.imageSort_full.Size = new System.Drawing.Size(189, 76);
             this.imageSort_full.TabIndex = 0;
             this.imageSort_full.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageSort_full_Click);
             // 
@@ -272,11 +297,11 @@ namespace UI
             this.imageSort_none.ButtonImage = global::UI.Properties.Resources.none_normal1;
             this.imageSort_none.ButtonText = "";
             this.imageSort_none.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageSort_none.Location = new System.Drawing.Point(3, 83);
+            this.imageSort_none.Location = new System.Drawing.Point(3, 85);
             this.imageSort_none.MouseClickImage = global::UI.Properties.Resources.none_selected;
             this.imageSort_none.MouseOverImage = global::UI.Properties.Resources.none_selected;
             this.imageSort_none.Name = "imageSort_none";
-            this.imageSort_none.Size = new System.Drawing.Size(189, 75);
+            this.imageSort_none.Size = new System.Drawing.Size(189, 77);
             this.imageSort_none.TabIndex = 1;
             this.imageSort_none.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageSort_none_Click);
             // 
@@ -292,7 +317,7 @@ namespace UI
             this.imageClearPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.imageClearPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.imageClearPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.imageClearPanel.Size = new System.Drawing.Size(195, 161);
+            this.imageClearPanel.Size = new System.Drawing.Size(195, 165);
             this.imageClearPanel.TabIndex = 2;
             this.imageClearPanel.Visible = false;
             // 
@@ -307,7 +332,7 @@ namespace UI
             this.imageCompress_full.MouseClickImage = global::UI.Properties.Resources.full_selected;
             this.imageCompress_full.MouseOverImage = global::UI.Properties.Resources.full_selected;
             this.imageCompress_full.Name = "imageCompress_full";
-            this.imageCompress_full.Size = new System.Drawing.Size(189, 74);
+            this.imageCompress_full.Size = new System.Drawing.Size(189, 76);
             this.imageCompress_full.TabIndex = 0;
             this.imageCompress_full.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageClear_full_Click);
             // 
@@ -318,19 +343,20 @@ namespace UI
             this.imageCompress_none.ButtonImage = global::UI.Properties.Resources.none_normal1;
             this.imageCompress_none.ButtonText = "";
             this.imageCompress_none.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.imageCompress_none.Location = new System.Drawing.Point(3, 83);
+            this.imageCompress_none.Location = new System.Drawing.Point(3, 85);
             this.imageCompress_none.MouseClickImage = global::UI.Properties.Resources.none_selected;
             this.imageCompress_none.MouseOverImage = global::UI.Properties.Resources.none_selected;
             this.imageCompress_none.Name = "imageCompress_none";
-            this.imageCompress_none.Size = new System.Drawing.Size(189, 75);
+            this.imageCompress_none.Size = new System.Drawing.Size(189, 77);
             this.imageCompress_none.TabIndex = 1;
             this.imageCompress_none.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.imageClear_none_Click);
             // 
             // result_show
             // 
             this.result_show.AllowDrop = true;
-            this.result_show.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.result_show.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.result_show.AutoScroll = true;
             this.result_show.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.result_show.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(208)))), ((int)(((byte)(255)))));
@@ -345,13 +371,12 @@ namespace UI
             this.result_show.Margin = new System.Windows.Forms.Padding(0);
             this.result_show.Name = "result_show";
             this.result_show.RowCount = 1;
-            this.result_show.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 508F));
-            this.result_show.Size = new System.Drawing.Size(902, 465);
+            this.result_show.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 536F));
+            this.result_show.Size = new System.Drawing.Size(900, 514);
             this.result_show.TabIndex = 1;
             this.result_show.Click += new System.EventHandler(this.result_show_Click);
             this.result_show.DragDrop += new System.Windows.Forms.DragEventHandler(this.result_show_DragDrop);
             this.result_show.DragEnter += new System.Windows.Forms.DragEventHandler(this.result_show_DragEnter);
-            this.result_show.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.result_show_MouseDoubleClick);
             this.result_show.Resize += new System.EventHandler(this.result_show_Resize);
             // 
             // tableLayoutPanel2
@@ -360,21 +385,21 @@ namespace UI
             this.tableLayoutPanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(211)))), ((int)(((byte)(255)))));
             this.tableLayoutPanel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.tableLayoutPanel2.ColumnCount = 4;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 18F));
             this.tableLayoutPanel2.Controls.Add(this.deleteImage, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.addImageSet, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.addImage, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.selectALL, 2, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel2.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 423);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 437);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(286, 40);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(286, 57);
             this.tableLayoutPanel2.TabIndex = 2;
             // 
             // deleteImage
@@ -387,11 +412,11 @@ namespace UI
             this.deleteImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.deleteImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("deleteImage.ButtonImage")));
             this.deleteImage.ButtonText = "";
-            this.deleteImage.Location = new System.Drawing.Point(244, 3);
+            this.deleteImage.Location = new System.Drawing.Point(236, 3);
             this.deleteImage.MouseClickImage = null;
             this.deleteImage.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("deleteImage.MouseOverImage")));
             this.deleteImage.Name = "deleteImage";
-            this.deleteImage.Size = new System.Drawing.Size(39, 34);
+            this.deleteImage.Size = new System.Drawing.Size(47, 51);
             this.deleteImage.TabIndex = 2;
             this.deleteImage.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.deleteImage_Click);
             // 
@@ -405,31 +430,31 @@ namespace UI
             this.addImageSet.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.addImageSet.ButtonImage = ((System.Drawing.Image)(resources.GetObject("addImageSet.ButtonImage")));
             this.addImageSet.ButtonText = "";
-            this.addImageSet.Location = new System.Drawing.Point(160, 3);
+            this.addImageSet.Location = new System.Drawing.Point(134, 3);
             this.addImageSet.MouseClickImage = null;
             this.addImageSet.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("addImageSet.MouseOverImage")));
             this.addImageSet.Name = "addImageSet";
-            this.addImageSet.Size = new System.Drawing.Size(36, 34);
+            this.addImageSet.Size = new System.Drawing.Size(45, 51);
             this.addImageSet.TabIndex = 1;
             this.addImageSet.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.addImageSet_Click);
             // 
-            // addImage
+            // selectALL
             // 
-            this.addImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.selectALL.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.addImage.AutoSize = true;
-            this.addImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.addImage.ButtonImage = ((System.Drawing.Image)(resources.GetObject("addImage.ButtonImage")));
-            this.addImage.ButtonText = "";
-            this.addImage.Location = new System.Drawing.Point(202, 3);
-            this.addImage.MouseClickImage = null;
-            this.addImage.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("addImage.MouseOverImage")));
-            this.addImage.Name = "addImage";
-            this.addImage.Size = new System.Drawing.Size(36, 34);
-            this.addImage.TabIndex = 0;
-            this.addImage.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.addImage_Click);
+            this.selectALL.AutoSize = true;
+            this.selectALL.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.selectALL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.selectALL.ButtonImage = ((System.Drawing.Image)(resources.GetObject("selectALL.ButtonImage")));
+            this.selectALL.ButtonText = "";
+            this.selectALL.Location = new System.Drawing.Point(185, 3);
+            this.selectALL.MouseClickImage = null;
+            this.selectALL.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("selectALL.MouseOverImage")));
+            this.selectALL.Name = "selectALL";
+            this.selectALL.Size = new System.Drawing.Size(45, 51);
+            this.selectALL.TabIndex = 0;
+            this.selectALL.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.selectAll_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -444,7 +469,7 @@ namespace UI
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 93F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(366, 417);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(441, 431);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // treeView1
@@ -467,7 +492,7 @@ namespace UI
             this.treeView1.Margin = new System.Windows.Forms.Padding(0);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(366, 417);
+            this.treeView1.Size = new System.Drawing.Size(441, 431);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
@@ -504,43 +529,48 @@ namespace UI
             this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList2.Images.SetKeyName(0, "addImage2.jpg");
             // 
-            // searchButton
+            // selectionMenu
             // 
-            this.searchButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.searchButton.ButtonImage = ((System.Drawing.Image)(resources.GetObject("searchButton.ButtonImage")));
-            this.searchButton.ButtonText = "";
-            this.searchButton.Location = new System.Drawing.Point(1029, 3);
-            this.searchButton.MouseClickImage = null;
-            this.searchButton.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("searchButton.MouseOverImage")));
-            this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(25, 17);
-            this.searchButton.TabIndex = 2;
+            this.selectionMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item1,
+            this.item2});
+            this.selectionMenu.Name = "contextMenuStrip1";
+            this.selectionMenu.Size = new System.Drawing.Size(173, 48);
+            this.selectionMenu.Opening += new System.ComponentModel.CancelEventHandler(this.selectionMenu_Opening);
             // 
-            // settingButton
+            // item1
             // 
-            this.settingButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.settingButton.ButtonImage = ((System.Drawing.Image)(resources.GetObject("settingButton.ButtonImage")));
-            this.settingButton.ButtonText = "";
-            this.settingButton.Location = new System.Drawing.Point(1063, 3);
-            this.settingButton.MouseClickImage = null;
-            this.settingButton.MouseOverImage = ((System.Drawing.Image)(resources.GetObject("settingButton.MouseOverImage")));
-            this.settingButton.Name = "settingButton";
-            this.settingButton.Size = new System.Drawing.Size(25, 17);
-            this.settingButton.TabIndex = 1;
-            this.settingButton.Click += new LT.WinForm.ImageButton.ImageButton.ClickEventHandler(this.settingButton_Click);
+            this.item1.Name = "item1";
+            this.item1.Size = new System.Drawing.Size(172, 22);
+            this.item1.Text = "选择作为参考图像";
+            // 
+            // item2
+            // 
+            this.item2.Name = "item2";
+            this.item2.Size = new System.Drawing.Size(172, 22);
+            this.item2.Text = "取消选择";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.Location = new System.Drawing.Point(24, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(161, 19);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "图像质量排序系统";
             // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 600);
-            this.Controls.Add(this.searchButton);
-            this.Controls.Add(this.settingButton);
+            this.ClientSize = new System.Drawing.Size(1202, 644);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.splitContainer1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.KeyPreview = true;
-            this.MinimumSize = new System.Drawing.Size(1200, 600);
+            this.MinimumSize = new System.Drawing.Size(1198, 600);
             this.Name = "MainForm";
             this.Text = "";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -561,7 +591,9 @@ namespace UI
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
+            this.selectionMenu.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -571,8 +603,6 @@ namespace UI
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
-        private LT.WinForm.ImageButton.ImageButton settingButton;
-        private LT.WinForm.ImageButton.ImageButton searchButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private LT.WinForm.ImageButton.ImageButton imageSort;
@@ -580,7 +610,7 @@ namespace UI
         private LT.WinForm.ImageButton.ImageButton imageCompare;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private LT.WinForm.ImageButton.ImageButton deleteImage;
-        private LT.WinForm.ImageButton.ImageButton addImage;
+        private LT.WinForm.ImageButton.ImageButton selectALL;
         private LT.WinForm.ImageButton.ImageButton addImageSet;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TableLayoutPanel imageSortPanel;
@@ -592,7 +622,12 @@ namespace UI
         public System.Windows.Forms.TableLayoutPanel result_show;
         public System.Windows.Forms.SplitContainer splitContainer2;
         private LT.WinForm.ImageButton.ImageButton imageCompress;
-        private LT.WinForm.ImageButton.ImageButton settingPanel;
+        private System.Windows.Forms.ContextMenuStrip selectionMenu;
+        private System.Windows.Forms.ToolStripMenuItem item1;
+        private System.Windows.Forms.ToolStripMenuItem item2;
+        private LT.WinForm.ImageButton.ImageButton setting;
+        private LT.WinForm.ImageButton.ImageButton aboutUs;
+        private System.Windows.Forms.Label label1;
 
     }
 }
