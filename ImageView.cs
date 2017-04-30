@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.FileIO;
 using System.IO;
-namespace UI
+namespace HVS
 {
     public partial class ImageView : Form
     {
@@ -16,6 +16,7 @@ namespace UI
         private int position;
         public ImageView(string[] picList,int position)
         {
+            this.WindowState = FormWindowState.Maximized;
             this.picList = picList;
             this.position = position;
             InitializeComponent();
@@ -36,16 +37,17 @@ namespace UI
             this.leftButton.Height = 50;
             this.rightButton.Margin = new Padding(0, height, 0, 0);
             this.rightButton.Height = 50;
+            this.TopMost = true;
           //  this.imageButton1.Height = formHeight;
           //  this.imageButton2.Height= formHeight;
             
 
             //窗口名称是当前图片名称
-            this.Text = MainForm.picInfo[path].name;
+            this.Text = "图片浏览器 - " + MainInfo.picInfo[path].name;
             
             //将所点击的图片添加到picturebox
             PictureBox image = this.pictureBox1;
-            image.Image = MainForm.picInfo[path].image;
+            image.Image = MainInfo.picInfo[path].image;
             //左右图片按钮显示
             if (position == 0)
             {
@@ -87,8 +89,19 @@ namespace UI
         //上一张图片
         private void imageButton1_Click(object sender, EventArgs e)
         {
+            left_shift();
+        }
+
+        //下一张图片
+        private void imageButton2_Click(object sender, EventArgs e)
+        {
+            right_shift();
+        }
+
+        public void left_shift()
+        {
             //position指第几张图片，0~length-1
-            if (position < 0)
+            if (position <= 0)
             {
                 this.leftButton.Visible = false;
             }
@@ -100,10 +113,10 @@ namespace UI
                     this.rightButton.Visible = true;
                 }
                 string path = picList[position];
-                this.Text = MainForm.picInfo[path].name;
+                this.Text = "图片浏览器 - " + MainInfo.picInfo[path].name;
                 PictureBox image = this.pictureBox1;
-              
-                image.Image = MainForm.picInfo[path].image;
+
+                image.Image = MainInfo.picInfo[path].image;
                 if (position <= 0)
                 {
                     this.leftButton.Visible = false;
@@ -111,10 +124,9 @@ namespace UI
             }
         }
 
-        //下一张图片
-        private void imageButton2_Click(object sender, EventArgs e)
+        public void right_shift()
         {
-            if(position >= picList.Length - 1)
+            if (position >= picList.Length - 1)
             {
                 this.rightButton.Visible = false;
             }
@@ -126,15 +138,28 @@ namespace UI
                     this.leftButton.Visible = true;
                 }
                 string path = picList[position];
-                this.Text = MainForm.picInfo[path].name;
+                this.Text = "图片浏览器 - " + MainInfo.picInfo[path].name;
                 PictureBox image = this.pictureBox1;
-                
-                image.Image = MainForm.picInfo[path].image;
-                if (position >=picList.Length - 1)
+
+                image.Image = MainInfo.picInfo[path].image;
+                if (position >= picList.Length - 1)
                 {
                     this.rightButton.Visible = false;
                 }
             }
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Left)
+            {
+                left_shift();
+            }
+            else if (keyData == Keys.Right)
+            {
+                right_shift();
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
     }
 }

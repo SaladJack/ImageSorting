@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
-namespace UI
+namespace HVS
 {
     //主类和界面入口
     static class Program

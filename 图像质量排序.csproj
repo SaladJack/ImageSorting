@@ -7,7 +7,7 @@
     <ProjectGuid>{32790293-A9F6-449B-8C60-EE30BF895A4A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UI</RootNamespace>
+    <RootNamespace>HVS</RootNamespace>
     <AssemblyName>UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -91,54 +91,59 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ClearSetting.cs">
+    <Compile Include="FR_algorithm.cs" />
+    <Compile Include="ClearSetting_FR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClearSetting.Designer.cs">
-      <DependentUpon>ClearSetting.cs</DependentUpon>
+    <Compile Include="ClearSetting_FR.Designer.cs">
+      <DependentUpon>ClearSetting_FR.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompareForm_none.cs">
+    <Compile Include="ClearSetting_NR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompareForm_none.designer.cs">
-      <DependentUpon>CompareForm_none.cs</DependentUpon>
+    <Compile Include="ClearSetting_NR.Designer.cs">
+      <DependentUpon>ClearSetting_NR.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompressForm_none.cs">
+    <Compile Include="Compare_NR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CompressForm_none.Designer.cs">
-      <DependentUpon>CompressForm_none.cs</DependentUpon>
+    <Compile Include="Compare_NR.designer.cs">
+      <DependentUpon>Compare_NR.cs</DependentUpon>
     </Compile>
-    <Compile Include="groupStatement.cs">
+    <Compile Include="Compress_FR.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="groupStatement.Designer.cs">
-      <DependentUpon>groupStatement.cs</DependentUpon>
+    <Compile Include="Compress_FR.Designer.cs">
+      <DependentUpon>Compress_FR.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageDeleteComfirmForm.cs">
+    <Compile Include="aboutUs.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageDeleteComfirmForm.Designer.cs">
-      <DependentUpon>ImageDeleteComfirmForm.cs</DependentUpon>
+    <Compile Include="aboutUs.Designer.cs">
+      <DependentUpon>aboutUs.cs</DependentUpon>
     </Compile>
+    <Compile Include="DeleteComfirmForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteComfirmForm.Designer.cs">
+      <DependentUpon>DeleteComfirmForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dllHelper.cs" />
+    <Compile Include="MainInfo.cs" />
+    <Compile Include="Pic.cs" />
+    <Compile Include="NR_algorithm.cs" />
     <Compile Include="picturePanel.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SelectCompressForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SelectCompressForm.Designer.cs">
-      <DependentUpon>SelectCompressForm.cs</DependentUpon>
-    </Compile>
+    <Compile Include="RR_algorithm.cs" />
     <Compile Include="SortingResult.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SortingResult.Designer.cs">
       <DependentUpon>SortingResult.cs</DependentUpon>
     </Compile>
-    <Compile Include="sortObject.cs" />
+    <Compile Include="SortObject.cs" />
     <Compile Include="IconIndexes.cs" />
-    <Compile Include="Image.cs" />
     <Compile Include="ImageView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,28 +172,33 @@
       <DependentUpon>SortingProgress.cs</DependentUpon>
     </Compile>
     <Compile Include="TreeViewItems.cs" />
-    <EmbeddedResource Include="ClearSetting.resx">
-      <DependentUpon>ClearSetting.cs</DependentUpon>
+    <EmbeddedResource Include="ClearSetting_FR.resx">
+      <DependentUpon>ClearSetting_FR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClearSetting_NR.resx">
+      <DependentUpon>ClearSetting_NR.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompareForm_none.resx">
-      <DependentUpon>CompareForm_none.cs</DependentUpon>
+    <EmbeddedResource Include="Compare_NR.resx">
+      <DependentUpon>Compare_NR.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CompressForm_none.resx">
-      <DependentUpon>CompressForm_none.cs</DependentUpon>
+    <EmbeddedResource Include="Compress_FR.resx">
+      <DependentUpon>Compress_FR.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="groupStatement.resx">
-      <DependentUpon>groupStatement.cs</DependentUpon>
+    <EmbeddedResource Include="aboutUs.resx">
+      <DependentUpon>aboutUs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageDeleteComfirmForm.resx">
-      <DependentUpon>ImageDeleteComfirmForm.cs</DependentUpon>
+    <EmbeddedResource Include="DeleteComfirmForm.resx">
+      <DependentUpon>DeleteComfirmForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImageView.resx">
       <DependentUpon>ImageView.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -201,9 +211,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="SelectCompressForm.resx">
-      <DependentUpon>SelectCompressForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SettingForm.resx">
       <DependentUpon>SettingForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace HVS
 {
     partial class ImageView
     {
@@ -69,7 +69,7 @@
             // rightButton
             // 
             this.rightButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.rightButton.ButtonImage = global::UI.Properties.Resources.right_arrow;
+            this.rightButton.ButtonImage = global::HVS.Properties.Resources.right_arrow;
             this.rightButton.ButtonText = "";
             this.rightButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.rightButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -85,7 +85,7 @@
             // leftButton
             // 
             this.leftButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.leftButton.ButtonImage = global::UI.Properties.Resources.left_arrow;
+            this.leftButton.ButtonImage = global::HVS.Properties.Resources.left_arrow;
             this.leftButton.ButtonText = "";
             this.leftButton.Cursor = System.Windows.Forms.Cursors.Default;
             this.leftButton.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -104,6 +104,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 268);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.MaximizeBox = false;
             this.Name = "ImageView";
             this.Text = "ImageView";
             this.Load += new System.EventHandler(this.ImageView_Load);

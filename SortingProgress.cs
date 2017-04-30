@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 
-namespace UI
+namespace HVS
 {
     public partial class SortingProgress : Form
     {

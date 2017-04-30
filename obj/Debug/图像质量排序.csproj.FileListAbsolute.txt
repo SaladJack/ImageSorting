@@ -318,9 +318,6 @@ F:\绩点\is\ImageSorting\obj\Debug\UI.SettingForm.resources
 F:\绩点\is\ImageSorting\obj\Debug\UI.SortingProgress.resources
 F:\绩点\is\ImageSorting\obj\Debug\UI.SortingResult.resources
 F:\绩点\is\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
-C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UI.exe.config
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.exe
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.pdb
 H:\ImageSorting\bin\Debug\UI.exe.config
 H:\ImageSorting\obj\Debug\UI.exe
 H:\ImageSorting\obj\Debug\UI.pdb
@@ -442,6 +439,7 @@ E:\project\imageprocess\3.19.2\ImageSorting\obj\Debug\UI.SortingProgress.resourc
 E:\project\imageprocess\3.19.2\ImageSorting\obj\Debug\UI.SortingResult.resources
 E:\project\imageprocess\3.19.2\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
 E:\project\imageprocess\3.19.2\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UI.exe.config
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UI.exe
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UI.pdb
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
@@ -454,50 +452,145 @@ C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\Microsoft.VisualStudio.Tes
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITesting.dll
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\RoundButton.dll
 C:\Users\Administrator\Desktop\ImageSorting\bin\Debug\UiaComWrapper.dll
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.ClearSetting.resources
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.CompareForm_none.resources
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.CompressForm_none.resources
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.groupStatement.resources
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.aboutUs.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.ImageView.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.MainForm.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.Properties.Resources.resources
-C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.SelectCompressForm.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.SettingForm.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.SortingProgress.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.SortingResult.resources
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
 C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.exe.licenses
-C:\Users\Administrator\Desktop\temp\ImageSorting\bin\Debug\UI.exe.config
-C:\Users\Administrator\Desktop\temp\ImageSorting\obj\Debug\UI.exe
-C:\Users\Administrator\Desktop\temp\ImageSorting\obj\Debug\UI.pdb
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UI.exe.config
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.exe
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.pdb
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UI.exe
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UI.pdb
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\CSkin.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\DMSkin.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\LT.WinForm.ImageButton.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Common.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Extension.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITesting.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\RoundButton.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\bin\Debug\UiaComWrapper.dll
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.ClearSetting.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.CompareForm_none.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.CompressForm_none.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.groupStatement.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.ImageView.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.MainForm.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.Properties.Resources.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.SelectCompressForm.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.SettingForm.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.SortingProgress.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.SortingResult.resources
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
-C:\Users\Administrator\Desktop\t\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.exe
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.pdb
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UI.exe.config
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.exe
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.pdb
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UI.exe
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UI.pdb
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\bin\Debug\UiaComWrapper.dll
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.ClearSetting.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.CompareForm_none.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.CompressForm_none.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.aboutUs.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.ImageView.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.MainForm.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.Properties.Resources.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.SettingForm.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.SortingProgress.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.SortingResult.resources
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
+E:\project\imageprocess\3.27\ImageSorting\ImageSorting\obj\Debug\UI.exe.licenses
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UI.exe.config
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.exe
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.pdb
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UI.exe
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UI.pdb
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
+E:\project\imageprocess\3.27\3.27\ImageSorting\bin\Debug\UiaComWrapper.dll
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.ClearSetting.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.CompareForm_none.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.CompressForm_none.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.aboutUs.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.ImageView.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.MainForm.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.Properties.Resources.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.SettingForm.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.SortingProgress.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.SortingResult.resources
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
+E:\project\imageprocess\3.27\3.27\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UI.exe.config
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.exe
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UI.exe
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UI.pdb
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\CSkin.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\DMSkin.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\LT.WinForm.ImageButton.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Common.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Extension.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITesting.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\RoundButton.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\bin\Debug\UiaComWrapper.dll
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.ClearSetting.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.CompareForm_none.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.CompressForm_none.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.aboutUs.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.ImageView.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.MainForm.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.SettingForm.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.SortingProgress.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.SortingResult.resources
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\新建文件夹 (2)\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.ClearingSetting_fullReference.resources
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.ClearSetting_noReference.resources
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.CompareForm.resources
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\UI.CompressForm.resources
+C:\Users\Administrator\Desktop\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UI.exe.config
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.exe
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.pdb
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UI.exe
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UI.pdb
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
+E:\project\imageprocess\4.9\ImageSorting\bin\Debug\UiaComWrapper.dll
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.ClearingSetting_fullReference.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.ClearSetting_noReference.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.CompareForm.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.CompressForm.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.aboutUs.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.ImageDeleteComfirmForm.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.ImageView.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.MainForm.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.Properties.Resources.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.SettingForm.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.SortingProgress.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.SortingResult.resources
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
+E:\project\imageprocess\4.9\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UI.exe.config
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.exe
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.pdb
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UI.exe
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UI.pdb
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UI.exe.CodeAnalysisLog.xml
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UI.exe.lastcodeanalysissucceeded
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\CSkin.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\DMSkin.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\LT.WinForm.ImageButton.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Common.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITest.Extension.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\Microsoft.VisualStudio.TestTools.UITesting.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\RoundButton.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\bin\Debug\UiaComWrapper.dll
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.CompressForm.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.aboutUs.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.ImageView.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.MainForm.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.Properties.Resources.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.SettingForm.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.SortingProgress.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.SortingResult.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\图像质量排序.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.exe.licenses
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.ClearSetting_FR.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.ClearSetting_NR.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.deleteComfirmForm.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\UI.Compare_NR.resources
+C:\Users\Administrator\Desktop\project\ImageSorting\obj\Debug\图像质量排序.csprojResolveAssemblyReference.cache

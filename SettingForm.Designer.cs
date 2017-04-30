@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace HVS
 {
     partial class SettingForm
     {
@@ -28,186 +28,189 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.clearance = new System.Windows.Forms.Label();
-            this.compression = new System.Windows.Forms.Label();
-            this.sorting = new System.Windows.Forms.Label();
-            this.clearance_full = new System.Windows.Forms.Label();
-            this.clearance_none = new System.Windows.Forms.Label();
-            this.compression_none = new System.Windows.Forms.Label();
-            this.sorting_none = new System.Windows.Forms.Label();
-            this.sorting_full = new System.Windows.Forms.Label();
-            this.clearance_full_combobox = new System.Windows.Forms.ComboBox();
-            this.clearance_none_combobox = new System.Windows.Forms.ComboBox();
-            this.compression_none_combobox = new System.Windows.Forms.ComboBox();
-            this.sorting_full_combobox = new System.Windows.Forms.ComboBox();
-            this.sorting_none_combobox = new System.Windows.Forms.ComboBox();
+            this.clear = new System.Windows.Forms.Label();
+            this.compress = new System.Windows.Forms.Label();
+            this.sort = new System.Windows.Forms.Label();
+            this.clear_fr = new System.Windows.Forms.Label();
+            this.clear_nr = new System.Windows.Forms.Label();
+            this.compress_fr = new System.Windows.Forms.Label();
+            this.sort_nr = new System.Windows.Forms.Label();
+            this.sort_fr = new System.Windows.Forms.Label();
+            this.clear_fr_combobox = new System.Windows.Forms.ComboBox();
+            this.clear_nr_combobox = new System.Windows.Forms.ComboBox();
+            this.compress_fr_combobox = new System.Windows.Forms.ComboBox();
+            this.sorting_fr_combobox = new System.Windows.Forms.ComboBox();
+            this.sorting_nr_combobox = new System.Windows.Forms.ComboBox();
             this.confirm = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
-            this.comparation_none_combobox = new System.Windows.Forms.ComboBox();
-            this.comparation_none = new System.Windows.Forms.Label();
-            this.comparation = new System.Windows.Forms.Label();
+            this.compare_nr_combobox = new System.Windows.Forms.ComboBox();
+            this.compare_nr = new System.Windows.Forms.Label();
+            this.compare = new System.Windows.Forms.Label();
             this.outputFolder = new System.Windows.Forms.Label();
             this.folder = new System.Windows.Forms.ComboBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.selection = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // clearance
+            // clear
             // 
-            this.clearance.AutoSize = true;
-            this.clearance.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.clearance.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.clearance.Location = new System.Drawing.Point(117, 40);
-            this.clearance.Name = "clearance";
-            this.clearance.Size = new System.Drawing.Size(123, 35);
-            this.clearance.TabIndex = 0;
-            this.clearance.Text = "图片清理";
+            this.clear.AutoSize = true;
+            this.clear.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.clear.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clear.Location = new System.Drawing.Point(117, 40);
+            this.clear.Name = "clear";
+            this.clear.Size = new System.Drawing.Size(123, 35);
+            this.clear.TabIndex = 0;
+            this.clear.Text = "图片清理";
             // 
-            // compression
+            // compress
             // 
-            this.compression.AutoSize = true;
-            this.compression.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.compression.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.compression.Location = new System.Drawing.Point(117, 130);
-            this.compression.Name = "compression";
-            this.compression.Size = new System.Drawing.Size(123, 35);
-            this.compression.TabIndex = 1;
-            this.compression.Text = "保质压缩";
+            this.compress.AutoSize = true;
+            this.compress.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.compress.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.compress.Location = new System.Drawing.Point(117, 130);
+            this.compress.Name = "compress";
+            this.compress.Size = new System.Drawing.Size(123, 35);
+            this.compress.TabIndex = 1;
+            this.compress.Text = "保质压缩";
             // 
-            // sorting
+            // sort
             // 
-            this.sorting.AutoSize = true;
-            this.sorting.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.sorting.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.sorting.Location = new System.Drawing.Point(117, 180);
-            this.sorting.Name = "sorting";
-            this.sorting.Size = new System.Drawing.Size(123, 35);
-            this.sorting.TabIndex = 2;
-            this.sorting.Text = "质量排序";
+            this.sort.AutoSize = true;
+            this.sort.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.sort.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.sort.Location = new System.Drawing.Point(117, 180);
+            this.sort.Name = "sort";
+            this.sort.Size = new System.Drawing.Size(123, 35);
+            this.sort.TabIndex = 2;
+            this.sort.Text = "质量排序";
             // 
-            // clearance_full
+            // clear_fr
             // 
-            this.clearance_full.AutoSize = true;
-            this.clearance_full.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.clearance_full.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.clearance_full.Location = new System.Drawing.Point(245, 40);
-            this.clearance_full.Name = "clearance_full";
-            this.clearance_full.Size = new System.Drawing.Size(96, 35);
-            this.clearance_full.TabIndex = 3;
-            this.clearance_full.Text = "全参考";
+            this.clear_fr.AutoSize = true;
+            this.clear_fr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.clear_fr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clear_fr.Location = new System.Drawing.Point(245, 40);
+            this.clear_fr.Name = "clear_fr";
+            this.clear_fr.Size = new System.Drawing.Size(96, 35);
+            this.clear_fr.TabIndex = 3;
+            this.clear_fr.Text = "全参考";
             // 
-            // clearance_none
+            // clear_nr
             // 
-            this.clearance_none.AutoSize = true;
-            this.clearance_none.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.clearance_none.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.clearance_none.Location = new System.Drawing.Point(245, 85);
-            this.clearance_none.Name = "clearance_none";
-            this.clearance_none.Size = new System.Drawing.Size(96, 35);
-            this.clearance_none.TabIndex = 4;
-            this.clearance_none.Text = "无参考";
+            this.clear_nr.AutoSize = true;
+            this.clear_nr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.clear_nr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.clear_nr.Location = new System.Drawing.Point(245, 85);
+            this.clear_nr.Name = "clear_nr";
+            this.clear_nr.Size = new System.Drawing.Size(96, 35);
+            this.clear_nr.TabIndex = 4;
+            this.clear_nr.Text = "无参考";
             // 
-            // compression_none
+            // compress_fr
             // 
-            this.compression_none.AutoSize = true;
-            this.compression_none.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.compression_none.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.compression_none.Location = new System.Drawing.Point(245, 130);
-            this.compression_none.Name = "compression_none";
-            this.compression_none.Size = new System.Drawing.Size(96, 35);
-            this.compression_none.TabIndex = 5;
-            this.compression_none.Text = "无参考";
+            this.compress_fr.AutoSize = true;
+            this.compress_fr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.compress_fr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.compress_fr.Location = new System.Drawing.Point(245, 130);
+            this.compress_fr.Name = "compress_fr";
+            this.compress_fr.Size = new System.Drawing.Size(96, 35);
+            this.compress_fr.TabIndex = 5;
+            this.compress_fr.Text = "全参考";
             // 
-            // sorting_none
+            // sort_nr
             // 
-            this.sorting_none.AutoSize = true;
-            this.sorting_none.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.sorting_none.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.sorting_none.Location = new System.Drawing.Point(245, 225);
-            this.sorting_none.Name = "sorting_none";
-            this.sorting_none.Size = new System.Drawing.Size(96, 35);
-            this.sorting_none.TabIndex = 8;
-            this.sorting_none.Text = "无参考";
+            this.sort_nr.AutoSize = true;
+            this.sort_nr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.sort_nr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.sort_nr.Location = new System.Drawing.Point(245, 225);
+            this.sort_nr.Name = "sort_nr";
+            this.sort_nr.Size = new System.Drawing.Size(96, 35);
+            this.sort_nr.TabIndex = 8;
+            this.sort_nr.Text = "无参考";
             // 
-            // sorting_full
+            // sort_fr
             // 
-            this.sorting_full.AutoSize = true;
-            this.sorting_full.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.sorting_full.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.sorting_full.Location = new System.Drawing.Point(245, 180);
-            this.sorting_full.Name = "sorting_full";
-            this.sorting_full.Size = new System.Drawing.Size(96, 35);
-            this.sorting_full.TabIndex = 7;
-            this.sorting_full.Text = "全参考";
+            this.sort_fr.AutoSize = true;
+            this.sort_fr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.sort_fr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.sort_fr.Location = new System.Drawing.Point(245, 180);
+            this.sort_fr.Name = "sort_fr";
+            this.sort_fr.Size = new System.Drawing.Size(96, 35);
+            this.sort_fr.TabIndex = 7;
+            this.sort_fr.Text = "全参考";
             // 
-            // clearance_full_combobox
+            // clear_fr_combobox
             // 
-            this.clearance_full_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.clearance_full_combobox.FormattingEnabled = true;
-            this.clearance_full_combobox.ItemHeight = 23;
-            this.clearance_full_combobox.Items.AddRange(new object[] {
+            this.clear_fr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.clear_fr_combobox.FormattingEnabled = true;
+            this.clear_fr_combobox.ItemHeight = 23;
+            this.clear_fr_combobox.Items.AddRange(new object[] {
             "PSNR",
             "LBP"});
-            this.clearance_full_combobox.Location = new System.Drawing.Point(398, 39);
-            this.clearance_full_combobox.Name = "clearance_full_combobox";
-            this.clearance_full_combobox.Size = new System.Drawing.Size(200, 31);
-            this.clearance_full_combobox.TabIndex = 9;
+            this.clear_fr_combobox.Location = new System.Drawing.Point(398, 39);
+            this.clear_fr_combobox.Name = "clear_fr_combobox";
+            this.clear_fr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.clear_fr_combobox.TabIndex = 9;
             // 
-            // clearance_none_combobox
+            // clear_nr_combobox
             // 
-            this.clearance_none_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.clearance_none_combobox.FormattingEnabled = true;
-            this.clearance_none_combobox.ItemHeight = 23;
-            this.clearance_none_combobox.Items.AddRange(new object[] {
-            "tenengrad"});
-            this.clearance_none_combobox.Location = new System.Drawing.Point(398, 84);
-            this.clearance_none_combobox.Name = "clearance_none_combobox";
-            this.clearance_none_combobox.Size = new System.Drawing.Size(200, 31);
-            this.clearance_none_combobox.TabIndex = 10;
+            this.clear_nr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.clear_nr_combobox.FormattingEnabled = true;
+            this.clear_nr_combobox.ItemHeight = 23;
+            this.clear_nr_combobox.Items.AddRange(new object[] {
+            "Tenengrad",
+            "Brenner"});
+            this.clear_nr_combobox.Location = new System.Drawing.Point(398, 84);
+            this.clear_nr_combobox.Name = "clear_nr_combobox";
+            this.clear_nr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.clear_nr_combobox.TabIndex = 10;
             // 
-            // compression_none_combobox
+            // compress_fr_combobox
             // 
-            this.compression_none_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.compression_none_combobox.FormattingEnabled = true;
-            this.compression_none_combobox.ItemHeight = 23;
-            this.compression_none_combobox.Items.AddRange(new object[] {
-            "tenengrad"});
-            this.compression_none_combobox.Location = new System.Drawing.Point(398, 129);
-            this.compression_none_combobox.Name = "compression_none_combobox";
-            this.compression_none_combobox.Size = new System.Drawing.Size(200, 31);
-            this.compression_none_combobox.TabIndex = 11;
-            // 
-            // sorting_full_combobox
-            // 
-            this.sorting_full_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.sorting_full_combobox.FormattingEnabled = true;
-            this.sorting_full_combobox.ItemHeight = 23;
-            this.sorting_full_combobox.Items.AddRange(new object[] {
+            this.compress_fr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.compress_fr_combobox.FormattingEnabled = true;
+            this.compress_fr_combobox.ItemHeight = 23;
+            this.compress_fr_combobox.Items.AddRange(new object[] {
             "PSNR",
             "LBP"});
-            this.sorting_full_combobox.Location = new System.Drawing.Point(398, 179);
-            this.sorting_full_combobox.Name = "sorting_full_combobox";
-            this.sorting_full_combobox.Size = new System.Drawing.Size(200, 31);
-            this.sorting_full_combobox.TabIndex = 13;
+            this.compress_fr_combobox.Location = new System.Drawing.Point(398, 129);
+            this.compress_fr_combobox.Name = "compress_fr_combobox";
+            this.compress_fr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.compress_fr_combobox.TabIndex = 11;
             // 
-            // sorting_none_combobox
+            // sorting_fr_combobox
             // 
-            this.sorting_none_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.sorting_none_combobox.FormattingEnabled = true;
-            this.sorting_none_combobox.ItemHeight = 23;
-            this.sorting_none_combobox.Items.AddRange(new object[] {
-            "tenengrad"});
-            this.sorting_none_combobox.Location = new System.Drawing.Point(398, 224);
-            this.sorting_none_combobox.Name = "sorting_none_combobox";
-            this.sorting_none_combobox.Size = new System.Drawing.Size(200, 31);
-            this.sorting_none_combobox.TabIndex = 14;
+            this.sorting_fr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.sorting_fr_combobox.FormattingEnabled = true;
+            this.sorting_fr_combobox.ItemHeight = 23;
+            this.sorting_fr_combobox.Items.AddRange(new object[] {
+            "PSNR",
+            "LBP"});
+            this.sorting_fr_combobox.Location = new System.Drawing.Point(398, 179);
+            this.sorting_fr_combobox.Name = "sorting_fr_combobox";
+            this.sorting_fr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.sorting_fr_combobox.TabIndex = 13;
+            // 
+            // sorting_nr_combobox
+            // 
+            this.sorting_nr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.sorting_nr_combobox.FormattingEnabled = true;
+            this.sorting_nr_combobox.ItemHeight = 23;
+            this.sorting_nr_combobox.Items.AddRange(new object[] {
+            "Tenengrad",
+            "Brenner"});
+            this.sorting_nr_combobox.Location = new System.Drawing.Point(398, 224);
+            this.sorting_nr_combobox.Name = "sorting_nr_combobox";
+            this.sorting_nr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.sorting_nr_combobox.TabIndex = 14;
             // 
             // confirm
             // 
-            this.confirm.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.confirm.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.confirm.Location = new System.Drawing.Point(366, 390);
             this.confirm.Name = "confirm";
-            this.confirm.Size = new System.Drawing.Size(75, 30);
+            this.confirm.Size = new System.Drawing.Size(85, 45);
             this.confirm.TabIndex = 15;
             this.confirm.Text = "确定";
             this.confirm.UseVisualStyleBackColor = true;
@@ -215,48 +218,49 @@
             // 
             // cancel
             // 
-            this.cancel.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.cancel.Font = new System.Drawing.Font("微软雅黑", 14.25F);
             this.cancel.Location = new System.Drawing.Point(506, 390);
             this.cancel.Name = "cancel";
-            this.cancel.Size = new System.Drawing.Size(75, 30);
+            this.cancel.Size = new System.Drawing.Size(85, 45);
             this.cancel.TabIndex = 16;
             this.cancel.Text = "取消";
             this.cancel.UseVisualStyleBackColor = true;
             this.cancel.Click += new System.EventHandler(this.cancel_Click);
             // 
-            // comparation_none_combobox
+            // compare_nr_combobox
             // 
-            this.comparation_none_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
-            this.comparation_none_combobox.FormattingEnabled = true;
-            this.comparation_none_combobox.ItemHeight = 23;
-            this.comparation_none_combobox.Items.AddRange(new object[] {
-            "tenengrad"});
-            this.comparation_none_combobox.Location = new System.Drawing.Point(398, 269);
-            this.comparation_none_combobox.Name = "comparation_none_combobox";
-            this.comparation_none_combobox.Size = new System.Drawing.Size(200, 31);
-            this.comparation_none_combobox.TabIndex = 12;
+            this.compare_nr_combobox.Font = new System.Drawing.Font("微软雅黑", 13F);
+            this.compare_nr_combobox.FormattingEnabled = true;
+            this.compare_nr_combobox.ItemHeight = 23;
+            this.compare_nr_combobox.Items.AddRange(new object[] {
+            "Tenengrad",
+            "Brenner"});
+            this.compare_nr_combobox.Location = new System.Drawing.Point(398, 269);
+            this.compare_nr_combobox.Name = "compare_nr_combobox";
+            this.compare_nr_combobox.Size = new System.Drawing.Size(200, 31);
+            this.compare_nr_combobox.TabIndex = 12;
             // 
-            // comparation_none
+            // compare_nr
             // 
-            this.comparation_none.AutoSize = true;
-            this.comparation_none.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.comparation_none.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.comparation_none.Location = new System.Drawing.Point(245, 270);
-            this.comparation_none.Name = "comparation_none";
-            this.comparation_none.Size = new System.Drawing.Size(96, 35);
-            this.comparation_none.TabIndex = 6;
-            this.comparation_none.Text = "无参考";
+            this.compare_nr.AutoSize = true;
+            this.compare_nr.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.compare_nr.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.compare_nr.Location = new System.Drawing.Point(245, 270);
+            this.compare_nr.Name = "compare_nr";
+            this.compare_nr.Size = new System.Drawing.Size(96, 35);
+            this.compare_nr.TabIndex = 6;
+            this.compare_nr.Text = "无参考";
             // 
-            // comparation
+            // compare
             // 
-            this.comparation.AutoSize = true;
-            this.comparation.Font = new System.Drawing.Font("微软雅黑", 20F);
-            this.comparation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.comparation.Location = new System.Drawing.Point(114, 269);
-            this.comparation.Name = "comparation";
-            this.comparation.Size = new System.Drawing.Size(123, 35);
-            this.comparation.TabIndex = 17;
-            this.comparation.Text = "质量比较";
+            this.compare.AutoSize = true;
+            this.compare.Font = new System.Drawing.Font("微软雅黑", 20F);
+            this.compare.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.compare.Location = new System.Drawing.Point(114, 269);
+            this.compare.Name = "compare";
+            this.compare.Size = new System.Drawing.Size(123, 35);
+            this.compare.TabIndex = 17;
+            this.compare.Text = "质量比较";
             // 
             // outputFolder
             // 
@@ -284,10 +288,10 @@
             // 
             // selection
             // 
-            this.selection.Font = new System.Drawing.Font("微软雅黑", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.selection.Font = new System.Drawing.Font("微软雅黑", 14.25F);
             this.selection.Location = new System.Drawing.Point(618, 329);
             this.selection.Name = "selection";
-            this.selection.Size = new System.Drawing.Size(75, 30);
+            this.selection.Size = new System.Drawing.Size(120, 40);
             this.selection.TabIndex = 20;
             this.selection.Text = "浏览文件夹";
             this.selection.UseVisualStyleBackColor = true;
@@ -301,27 +305,28 @@
             this.Controls.Add(this.selection);
             this.Controls.Add(this.folder);
             this.Controls.Add(this.outputFolder);
-            this.Controls.Add(this.comparation);
+            this.Controls.Add(this.compare);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.confirm);
-            this.Controls.Add(this.sorting_none_combobox);
-            this.Controls.Add(this.sorting_full_combobox);
-            this.Controls.Add(this.comparation_none_combobox);
-            this.Controls.Add(this.compression_none_combobox);
-            this.Controls.Add(this.clearance_none_combobox);
-            this.Controls.Add(this.clearance_full_combobox);
-            this.Controls.Add(this.sorting_none);
-            this.Controls.Add(this.sorting_full);
-            this.Controls.Add(this.comparation_none);
-            this.Controls.Add(this.compression_none);
-            this.Controls.Add(this.clearance_none);
-            this.Controls.Add(this.clearance_full);
-            this.Controls.Add(this.sorting);
-            this.Controls.Add(this.compression);
-            this.Controls.Add(this.clearance);
+            this.Controls.Add(this.sorting_nr_combobox);
+            this.Controls.Add(this.sorting_fr_combobox);
+            this.Controls.Add(this.compare_nr_combobox);
+            this.Controls.Add(this.compress_fr_combobox);
+            this.Controls.Add(this.clear_nr_combobox);
+            this.Controls.Add(this.clear_fr_combobox);
+            this.Controls.Add(this.sort_nr);
+            this.Controls.Add(this.sort_fr);
+            this.Controls.Add(this.compare_nr);
+            this.Controls.Add(this.compress_fr);
+            this.Controls.Add(this.clear_nr);
+            this.Controls.Add(this.clear_fr);
+            this.Controls.Add(this.sort);
+            this.Controls.Add(this.compress);
+            this.Controls.Add(this.clear);
             this.MaximizeBox = false;
             this.Name = "SettingForm";
             this.Text = "设置";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,24 +334,24 @@
 
         #endregion
 
-        private System.Windows.Forms.Label clearance;
-        private System.Windows.Forms.Label compression;
-        private System.Windows.Forms.Label sorting;
-        private System.Windows.Forms.Label clearance_full;
-        private System.Windows.Forms.Label clearance_none;
-        private System.Windows.Forms.Label compression_none;
-        private System.Windows.Forms.Label sorting_none;
-        private System.Windows.Forms.Label sorting_full;
-        private System.Windows.Forms.ComboBox clearance_full_combobox;
-        private System.Windows.Forms.ComboBox clearance_none_combobox;
-        private System.Windows.Forms.ComboBox compression_none_combobox;
-        private System.Windows.Forms.ComboBox sorting_full_combobox;
-        private System.Windows.Forms.ComboBox sorting_none_combobox;
+        private System.Windows.Forms.Label clear;
+        private System.Windows.Forms.Label compress;
+        private System.Windows.Forms.Label sort;
+        private System.Windows.Forms.Label clear_fr;
+        private System.Windows.Forms.Label clear_nr;
+        private System.Windows.Forms.Label compress_fr;
+        private System.Windows.Forms.Label sort_nr;
+        private System.Windows.Forms.Label sort_fr;
+        private System.Windows.Forms.ComboBox clear_fr_combobox;
+        private System.Windows.Forms.ComboBox clear_nr_combobox;
+        private System.Windows.Forms.ComboBox compress_fr_combobox;
+        private System.Windows.Forms.ComboBox sorting_fr_combobox;
+        private System.Windows.Forms.ComboBox sorting_nr_combobox;
         private System.Windows.Forms.Button confirm;
         private System.Windows.Forms.Button cancel;
-        private System.Windows.Forms.ComboBox comparation_none_combobox;
-        private System.Windows.Forms.Label comparation_none;
-        private System.Windows.Forms.Label comparation;
+        private System.Windows.Forms.ComboBox compare_nr_combobox;
+        private System.Windows.Forms.Label compare_nr;
+        private System.Windows.Forms.Label compare;
         private System.Windows.Forms.Label outputFolder;
         private System.Windows.Forms.ComboBox folder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
