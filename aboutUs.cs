@@ -7,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace UI
+namespace HVS
 {
-    public partial class groupStatement : Form
+    public partial class aboutUs : Form
     {
-        public groupStatement()
+        public aboutUs()
         {
             InitializeComponent();
         }

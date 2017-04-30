@@ -2,36 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
-namespace UI
+namespace HVS
 {
     public class SettingInfo
     {
         /*
-         *
-         * 用户设置的方法
-         * 赋值为默认值
-         */
-        public static string image_clean_full = "PSNR";
-        public static string image_clean_none = "tenengrad";
-        public static string image_compress_full = "PSNR";
-        public static string image_compare_none = "tenengrad";
-        public static string image_sort_full = "PSNR";
-        public static string image_sort_none = "tenengrad";
+            * 用户设置的方法
+            * 赋值为默认值
+        */
+        public static string imageClear_FRmethod = "PSNR";
+        public static string imageClear_NRmethod = "Tenengrad";
+        public static string imageCompress_FRmethod = "PSNR";
+        public static string imageCompare_NRmethod = "Tenengrad";
+        public static string imageSort_FRmethod = "PSNR";
+        public static string imageSort_NRmethod = "Tenengrad";
+        public static string save_path = "default";
 
-        public static int image_clean_full_selected = 0;
-        public static int image_clean_none_selected = 0;
-        public static int image_compress_full_selected = 0;
-        public static int image_compare_none_selected = 0;
-        public static int image_sort_full_selected = 0;
-        public static int image_sort_none_selected = 0;
-
-        public static string save_path = null;
-
-        public static int SELECT_COMPRESS_FULL = 1;
-        public static int SELECT_COMPRESS_NONE = 2;
-        public static int SELECT_COMPRESS_METHOD;
-        public static int SELECT_COMPRESS_SCORE = 4;
-        public static int SELECT_COMPRESS_RATE = 5;
+        public static string FR_dll_path = Directory.GetCurrentDirectory() + "\\FR_dll";
+        public static string RR_dll_path = Directory.GetCurrentDirectory() + "\\RR_dll";
+        public static string NR_dll_path = Directory.GetCurrentDirectory() + "\\NR_dll";
+        public static dllHelper dllHelper = new dllHelper(FR_dll_path, RR_dll_path, NR_dll_path); //算法dll
     }
 }

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Collections;
 
-namespace UI
+namespace HVS
 {
     //自定义封装控件picturePanel，调用时先new picturePanel，将控件添加到父控件后，再调用init函数进行picturePanel的图片和文字显示(如果不需要显示文字参数传入null)
     class picturePanel : Panel
@@ -20,6 +20,7 @@ namespace UI
         public int id;
         int w;
         int h;
+
         public picturePanel(int id)
         {
             this.Dock = DockStyle.Fill;
@@ -59,7 +60,7 @@ namespace UI
             image.Anchor = AnchorStyles.None;
             image_name.Dock = DockStyle.Bottom;
 
-            image.Location = new Point((this.Width - image.Width) / 2, (this.Height - 15 - image.Height) / 2);
+            image.Location = new Point((this.Width - image.Width) / 2, (this.Height - 15 - image.Height) / 3);
             this.Controls.Add(image);
             this.Controls.Add(image_name);
         }

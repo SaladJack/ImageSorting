@@ -11,7 +11,7 @@ using CCWin;
 using System.IO;
 using System.Collections;
 using System.Drawing.Imaging;
-using demo1;
+using HVS;
 using System.Windows.Media.Imaging;
 using System.Threading;
 using Microsoft.VisualBasic;
@@ -19,7 +19,7 @@ using Microsoft.VisualBasic;
 using System.Diagnostics;
 
 
-namespace UI
+namespace HVS
 {
     /// <summary>
     /// 自定义类TreeViewItems 调用其Add(TreeNode e)方法加载子目录

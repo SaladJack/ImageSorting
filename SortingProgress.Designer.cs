@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace HVS
 {
     partial class SortingProgress
     {

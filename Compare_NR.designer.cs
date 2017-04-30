@@ -1,6 +1,6 @@
-﻿namespace UI
+﻿namespace HVS
 {
-    partial class CompareForm_none
+    partial class Compare_NR
     {
         /// <summary>
         /// Required designer variable.

@@ -12,20 +12,14 @@ using System.Threading;
 using System.IO;
 using System.Collections;
 using Microsoft.VisualBasic.FileIO;
-using demo1;
+using HVS;
 
-namespace UI
+namespace HVS
 {
     public partial class MainForm :CCSkinMain
     {
-        public static int tot = 0; //图片数
-        public static bool[] selected; //每张图片是否被选中，true表示被选中，false表示没被选中
-        public static string[] name; //图片名字
-        public static string[] path_name; //图片路径，记录第i张图片的地址
         public static bool[] imageToDelete; //图片状态
-        public static int progress; //排序进度
         public static int clear_ratio = 50; //图片清理率，也就是清除图片评分后百分之几的图片
-        public static Dictionary<string, Pic> picInfo; //图片信息，键值对<图片路径,Pic对象>，可以根据路径名得到图片信息，包括图片的bitmap类对象(封装在Pic类中)，可用于控件的图像展示
         private const int SIZE = 10000; //初始化常量
         private const double size_rate = 0.85;
         public static string previous_pic = null; //上一次全参考选择的图像
@@ -39,8 +33,8 @@ namespace UI
         string tag = "True"; //Tag标签，用于检测被check的结点（每个被check的结点的tag属性被设置为true）
         TreeNode rootNode; //用于设置目录树根节点（我的电脑）
         bool select_all = false; //是否全选
-        public static Color unselected_color = Color.FromArgb(128, 208, 255); //图片未选择时背景颜色
-        public static Color selected_color = Color.FromArgb(92, 199, 249); //图片选择时背景颜色
+        public static Color unselected_color = Color.White; //图片未选择时背景颜色
+        public static Color selected_color = Color.Gray; //图片选择时背景颜色
         int sizeF = 5; //缩放等级，缩放等级越小图片越大
         bool control_flag = false; //记录ctrl键是否键下，用于图片缩放
         bool shift_flag = false; //记录shift键是否键下，用于连续选择
@@ -53,6 +47,17 @@ namespace UI
         EventHandler de2; //双击单元格打开图片查看器
         EventHandler de3; //双击单元格打开图片查看器
 
+        //防止窗体闪烁
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.ExStyle |= 0x02000000;
+                return cp;
+            }
+        }
+
         //主窗口初始化变量
         public MainForm()
         {
@@ -60,14 +65,14 @@ namespace UI
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             Control.CheckForIllegalCrossThreadCalls = false;
-            selected = new bool[SIZE];
+            MainInfo.selected = new bool[SIZE];
             imageToDelete = new bool[SIZE];
-            name = new string[SIZE];
-            path_name = new string[SIZE];
-            picInfo = new Dictionary<string, Pic>();
+            MainInfo.name = new string[SIZE];
+            MainInfo.path_name = new string[SIZE];
+            MainInfo.picInfo = new Dictionary<string, Pic>();
             for (int i = 0; i < SIZE; i++)
             {
-                selected[i] = false;
+                MainInfo.selected[i] = false;
                 imageToDelete[i] = false;
             }
             e1 = new MouseEventHandler(item_click);
@@ -76,25 +81,25 @@ namespace UI
             de1 = new EventHandler(item_double_click);
             de2 = new EventHandler(pictureBox_double_click);
             de3 = new EventHandler(label_double_click);
-            result_show.Width = splitContainer2.Panel1.Width / sizeF * 5;
+            resultPanel.Width = splitContainer2.Panel1.Width / sizeF * 5;
             if (sizeF != 5)
             {
-                result_show.Width += sizeF * 5;
+                resultPanel.Width += sizeF * 5;
             }
-            result_show.MouseWheel += new System.Windows.Forms.MouseEventHandler(changeSize);
+            resultPanel.MouseWheel += new System.Windows.Forms.MouseEventHandler(changeSize);
             referenceMark = new PictureBox();
             referenceMark.Width = 25;
             referenceMark.Height = 25;
             referenceMark.Image = Properties.Resources.done;
             referenceMark.SizeMode = PictureBoxSizeMode.StretchImage;
-            result_show.HorizontalScroll.Enabled = true;
-            result_show.HorizontalScroll.Visible = true;
+            resultPanel.HorizontalScroll.Enabled = true;
+            resultPanel.HorizontalScroll.Visible = true;
             this.Width = (int)(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width * size_rate);
             this.Height = (int)(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height * size_rate);
             this.Location = new Point((System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 3 * 2, (System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - this.Height) / 3 * 2);
           
             this.FormBorderStyle = FormBorderStyle.None;
-            result_show.ColumnCount = 1;
+            resultPanel.ColumnCount = 1;
         }
 
         //窗口加载
@@ -108,10 +113,10 @@ namespace UI
         private void MainForm_Resize(object sender, EventArgs e) 
         {
            
-            result_show.Width = splitContainer2.Panel1.Width / sizeF * 5;
+            resultPanel.Width = splitContainer2.Panel1.Width / sizeF * 5;
             if(sizeF!=5)
             {
-                result_show.Width += sizeF * 5;
+                resultPanel.Width += sizeF * 5;
             }
             int width;
             int height;
@@ -180,13 +185,13 @@ namespace UI
             int cnt = 0;
             string _path = null;
             string _name = null;
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
                     cnt++;
-                    _path = path_name[i];
-                    _name = name[i];
+                    _path = MainInfo.path_name[i];
+                    _name = MainInfo.name[i];
                 }
             }
             if (cnt == 0)
@@ -199,7 +204,7 @@ namespace UI
                 MessageBox.Show("压缩图片只能为一张");
                 return;
             }
-            CompressForm_none cn = new CompressForm_none(_path, _name);
+            Compress_FR cn = new Compress_FR(_path, _name);
             cn.Show();
         }
 
@@ -218,9 +223,9 @@ namespace UI
             int cnt = 0;
             int id1 = -1;
             int id2 = -1;
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
                     cnt++;
                     if(id1 == -1)
@@ -238,7 +243,7 @@ namespace UI
                 MessageBox.Show("请选择两张图片!");
                 return;
             }
-            CompareForm_none compareForm_none = new CompareForm_none(id1, id2);
+            Compare_NR compareForm_none = new Compare_NR(id1, id2);
             compareForm_none.Show();
         }
 
@@ -247,7 +252,7 @@ namespace UI
         {
             imageSortPanel.Visible = false;
             imageClearPanel.Visible = false;
-            groupStatement gs = new groupStatement();
+            aboutUs gs = new aboutUs();
             gs.Show();
         } 
 
@@ -258,16 +263,16 @@ namespace UI
             {
                 Panel p = (Panel)sender;
                 int id = int.Parse(p.Name);
-                selected[id] = !selected[id];
+                MainInfo.selected[id] = !MainInfo.selected[id];
                 if (p.BackColor == unselected_color)
                 {
                     if(previous_panel_temp == id)
                     {
-                        selected[id] = false;
+                        MainInfo.selected[id] = false;
                         return;
                     }
                     p.BackColor = selected_color;
-                    selected[id] = true;
+                    MainInfo.selected[id] = true;
                     if (previous_select == -1)
                     {
                         previous_select = id;
@@ -293,8 +298,8 @@ namespace UI
                                {
                                    continue;
                                }
-                               selected[i] = true;
-                               ((Panel)result_show.Controls[i]).BackColor = selected_color;
+                               MainInfo.selected[i] = true;
+                               ((Panel)resultPanel.Controls[i]).BackColor = selected_color;
                            }
                        }
                        else
@@ -306,7 +311,7 @@ namespace UI
                 else
                 {
                     p.BackColor = unselected_color;
-                    selected[id] = false;
+                    MainInfo.selected[id] = false;
                     previous_select = -1;
                 }
             }
@@ -315,9 +320,9 @@ namespace UI
                 selectionMenu.Show(Cursor.Position);
                 Panel p = (Panel)sender;
                 int id = int.Parse(p.Name);
-                referenceImage_temp = path_name[id];
+                referenceImage_temp = MainInfo.path_name[id];
                 panel_temp = id;
-                if(selected[id])
+                if(MainInfo.selected[id])
                 {
                     selectionMenu.Items[0].Enabled = false;
                     selectionMenu.Items[1].Enabled = false;
@@ -341,10 +346,10 @@ namespace UI
             Panel p = (Panel)sender;
             PictureBox curPicture = (PictureBox)(p.Controls[0]);
             int position = int.Parse(curPicture.Name);
-            string[] picList = new string[tot];
-            for (int i = 0; i < tot; i++)
+            string[] picList = new string[MainInfo.tot];
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                picList[i] = path_name[i];
+                picList[i] = MainInfo.path_name[i];
             }
             Form imageshow = new ImageView(picList, position);
             imageshow.Size = new Size(1024, 800);
@@ -358,16 +363,16 @@ namespace UI
             {
                 Panel p = (Panel)(((PictureBox)sender).Parent);
                 int id = int.Parse(p.Name);
-                selected[id] = !selected[id];
+                MainInfo.selected[id] = !MainInfo.selected[id];
                 if (p.BackColor == unselected_color)
                 {
                     if (previous_panel_temp == id)
                     {
-                        selected[id] = false;
+                        MainInfo.selected[id] = false;
                         return;
                     }
                     p.BackColor = selected_color;
-                    selected[id] = true;
+                    MainInfo.selected[id] = true;
                     if (previous_select == -1)
                     {
                         previous_select = id;
@@ -393,8 +398,8 @@ namespace UI
                                 {
                                     continue;
                                 }
-                                selected[i] = true;
-                                ((Panel)result_show.Controls[i]).BackColor = selected_color;
+                                MainInfo.selected[i] = true;
+                                ((Panel)resultPanel.Controls[i]).BackColor = selected_color;
                             }
                         }
                         else
@@ -406,7 +411,7 @@ namespace UI
                 else
                 {
                     p.BackColor = unselected_color;
-                    selected[id] = false;
+                    MainInfo.selected[id] = false;
                     previous_select = -1;
                 }
             }
@@ -415,9 +420,9 @@ namespace UI
                 selectionMenu.Show(Cursor.Position);
                 Panel p = (Panel)(((PictureBox)sender).Parent);
                 int id = int.Parse(p.Name);
-                referenceImage_temp = path_name[id];
+                referenceImage_temp = MainInfo.path_name[id];
                 panel_temp = id;
-                if (selected[id])
+                if (MainInfo.selected[id])
                 {
                     selectionMenu.Items[0].Enabled = false;
                     selectionMenu.Items[1].Enabled = false;
@@ -440,10 +445,10 @@ namespace UI
         {
             PictureBox curPicture = (PictureBox)(sender);
             int position = int.Parse(curPicture.Name);
-            string[] picList = new string[tot];
-            for (int i = 0; i < tot; i++)
+            string[] picList = new string[MainInfo.tot];
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                picList[i] = path_name[i];
+                picList[i] = MainInfo.path_name[i];
             }
             Form imageshow = new ImageView(picList, position);
             imageshow.Size = new Size(1024, 800);
@@ -457,16 +462,16 @@ namespace UI
             {
                 Panel p = (Panel)(((Label)sender).Parent);
                 int id = int.Parse(p.Name);
-                selected[id] = !selected[id];
+                MainInfo.selected[id] = !MainInfo.selected[id];
                 if (p.BackColor == unselected_color)
                 {
                     if (previous_panel_temp == id)
                     {
-                        selected[id] = false;
+                        MainInfo.selected[id] = false;
                         return;
                     }
                     p.BackColor = selected_color;
-                    selected[id] = true;
+                    MainInfo.selected[id] = true;
                     if (previous_select == -1)
                     {
                         previous_select = id;
@@ -492,8 +497,8 @@ namespace UI
                                 {
                                     continue;
                                 }
-                                selected[i] = true;
-                                ((Panel)result_show.Controls[i]).BackColor = selected_color;
+                                MainInfo.selected[i] = true;
+                                ((Panel)resultPanel.Controls[i]).BackColor = selected_color;
                             }
                         }
                         else
@@ -505,7 +510,7 @@ namespace UI
                 else
                 {
                     p.BackColor = unselected_color;
-                    selected[id] = false;
+                    MainInfo.selected[id] = false;
                     previous_select = -1;
                 }
             }
@@ -514,9 +519,9 @@ namespace UI
                 selectionMenu.Show(Cursor.Position);
                 Panel p = (Panel)(((Label)sender).Parent);
                 int id = int.Parse(p.Name);
-                referenceImage_temp = path_name[id];
+                referenceImage_temp = MainInfo.path_name[id];
                 panel_temp = id;
-                if (selected[id])
+                if (MainInfo.selected[id])
                 {
                     selectionMenu.Items[0].Enabled = false;
                     selectionMenu.Items[1].Enabled = false;
@@ -540,10 +545,10 @@ namespace UI
             Panel p = (Panel)(((Label)sender).Parent);
             PictureBox curPicture = (PictureBox)(p.Controls[0]);
             int position = int.Parse(curPicture.Name);
-            string[] picList = new string[tot];
-            for(int i = 0 ; i < tot; i++)
+            string[] picList = new string[MainInfo.tot];
+            for(int i = 0 ; i < MainInfo.tot; i++)
             {
-                picList[i] = path_name[i];
+                picList[i] = MainInfo.path_name[i];
             }
             Form imageshow = new ImageView(picList, position);
             imageshow.Size = new Size(1024, 800);
@@ -553,42 +558,42 @@ namespace UI
         //添加图片到左边工作区
         bool add_image(string path, string _name)
         {
-            if (picInfo.ContainsKey(path))
+            if (MainInfo.picInfo.ContainsKey(path))
             {
                 return false; //图片已经存在，添加失败
             }
             Pic pic = new Pic(path, _name);
-            picInfo.Add(path, pic);
-            if(tot == 0)
+            MainInfo.picInfo.Add(path, pic);
+            if(MainInfo.tot == 0)
             {
-                result_show.ColumnCount = 5;
+                resultPanel.ColumnCount = 5;
             }
             //添加新的图片单元格
-            if (tot % 5 == 0)
+            if (MainInfo.tot % 5 == 0)
             {
-                result_show.RowStyles.Insert(result_show.RowCount++, new RowStyle());
+                resultPanel.RowStyles.Insert(resultPanel.RowCount++, new RowStyle());
                 TableLayoutRowStyleCollection rowstyles;
-                rowstyles = result_show.RowStyles;
+                rowstyles = resultPanel.RowStyles;
                 foreach (RowStyle style in rowstyles)
                 {
                     style.SizeType = SizeType.Absolute;
-                    style.Height = result_show.Width / 5;
+                    style.Height = resultPanel.Width / 5;
                 }
             }
-            name[tot] = _name;
+            MainInfo.name[MainInfo.tot] = _name;
 
             picturePanel p = new picturePanel();
-            p.Name = tot.ToString();
+            p.Name = MainInfo.tot.ToString();
             p.BackColor = unselected_color;
             p.image_name.Height = 25;
             p.image_name.Font = new Font("微软雅黑", 12);
-            //p.image.MouseDoubleClick += new MouseEventHandler(image_MouseDoubleClick);
-            p.image.Name = tot.ToString();
-            result_show.Controls.Add(p, tot % 5, tot / 5);
-            p.init(MainForm.picInfo[path].image, _name);
-            path_name[tot] = path;
-            result_show.Refresh();
-            tot++;
+            p.image_name.ForeColor = Color.Black;
+            p.image.Name = MainInfo.tot.ToString();
+            resultPanel.Controls.Add(p, MainInfo.tot % 5, MainInfo.tot / 5);
+            p.init(MainInfo.picInfo[path].image, _name);
+            MainInfo.path_name[MainInfo.tot] = path;
+            resultPanel.Refresh();
+            MainInfo.tot++;
             return true; //成功添加图片
         }
 
@@ -635,7 +640,7 @@ namespace UI
                 name = sArray[sArray.Length - 2];
                 if (add_image(path, name))
                 {
-                    Panel pa = (Panel)result_show.GetControlFromPosition((tot - 1) % 5, (tot - 1) / 5);
+                    Panel pa = (Panel)resultPanel.GetControlFromPosition((MainInfo.tot - 1) % 5, (MainInfo.tot - 1) / 5);
                     PictureBox pb = (PictureBox)pa.Controls[0];
                     Label l = (Label)pa.Controls[1];
                     pa.MouseClick += e1;
@@ -669,15 +674,15 @@ namespace UI
         //result_show控件转入释放事件：遍历目录树所有结点，将其中被check的图片添加到result_show中
         private void result_show_DragDrop(object sender, DragEventArgs e)
         {
-            int i = tot;
+            int i = MainInfo.tot;
             TreeNode topnode = rootNode;//得到TreeView的根结点，注意根结点只有一个
             TraversNodes(topnode);//遍历根结点
             picturePanel pa;
             PictureBox pb;
             Label l;
-            for (; i < tot; i++)
+            for (; i < MainInfo.tot; i++)
             {
-                pa = (picturePanel)result_show.GetControlFromPosition(i % 5, i / 5);
+                pa = (picturePanel)resultPanel.GetControlFromPosition(i % 5, i / 5);
                 pb = (PictureBox)pa.Controls[0];
                 l = (Label)pa.Controls[1];
                 pa.MouseClick += e1;
@@ -794,15 +799,15 @@ namespace UI
 
         private void addImageSet_Click(object sender, EventArgs e)
         {
-            int i = tot;
+            int i = MainInfo.tot;
             TreeNode topNode = rootNode;
             TraversNodes(topNode);
             picturePanel pa;
             PictureBox pb;
             Label l;
-            for (; i < tot; i++)
+            for (; i < MainInfo.tot; i++)
             {
-                pa = (picturePanel)result_show.GetControlFromPosition(i % 5, i / 5);
+                pa = (picturePanel)resultPanel.GetControlFromPosition(i % 5, i / 5);
                 pb = (PictureBox)pa.Controls[0];
                 l = (Label)pa.Controls[1];
                 pa.MouseClick += e1;
@@ -814,43 +819,22 @@ namespace UI
             }
         }
 
-        //排序进度条更新线程
-        public void progress_thread()
-        {
-            SortingProgress sp = new SortingProgress();
-            sp.Show();
-            sp.Refresh();
-            while(true)
-            {
-                if(progress<1000)
-                {
-                    sp.sortingProgressBar.Value = progress;
-                }
-                else
-                {
-                    sp.Dispose();
-                    break;
-                }
-                Thread.Sleep(50);
-            }
-        }
-
         //点击工作区隐藏图片清理、图片压缩、图片排序的面板
-        private void result_show_Click(object sender, EventArgs e)
+        private void resultPanel_Click(object sender, EventArgs e)
         {
             imageClearPanel.Visible = false;
             imageSortPanel.Visible = false;
         }
 
         //图片无参考排序
-        private void imageSort_none_Click(object sender, EventArgs e)
+        private void imageSort_NR_Click(object sender, EventArgs e)
         {
             resetSortPanel();
             this.Refresh();
             int picNum = 0;
-            for (int i = 0; i<tot;i++ )
+            for (int i = 0; i<MainInfo.tot;i++ )
             {
-                if(selected[i])
+                if(MainInfo.selected[i])
                 {
                     picNum++;
                 }
@@ -860,43 +844,19 @@ namespace UI
                 MessageBox.Show("请选择至少一张图片");
                 return;
             }
-
-            progress = 0;
-            int id = 0;
-            Thread progressThread = new Thread(progress_thread);
-            progressThread.IsBackground = true;
-            progressThread.Start();
-            sortObject[] originArray = new sortObject[picNum];
-            sortObject[] sortedArray = new sortObject[picNum];
-            for (int i = 0; i < tot; i++)
-            {
-                if (selected[i])
-                {
-                    if (!picInfo[path_name[i]].state_none)
-                    {
-                        picInfo[path_name[i]].grade_none = picInfo[path_name[i]].tenengrad();
-                        picInfo[path_name[i]].state_none = true;
-                    }
-                    originArray[id] = new sortObject(picInfo[path_name[i]].grade_none, path_name[i], name[i]);
-                    sortedArray[id++] = new sortObject(picInfo[path_name[i]].grade_none, path_name[i], name[i]);
-                }
-                progress = 1000 * id / picNum;
-            }
-            Array.Sort(sortedArray, new sortObjectComparer()); //图片排序调用
-
-            SortingResult sr = new SortingResult(picNum, originArray, sortedArray);
+            SortingResult sr = new SortingResult();
             sr.Show();
         }
 
         //图片全参考排序
-        private void imageSort_full_Click(object sender, EventArgs e)
+        private void imageSort_FR_Click(object sender, EventArgs e)
         {
             resetSortPanel();
             this.Refresh();
             int picNum = 0;
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
                     picNum++;
                 }
@@ -911,77 +871,45 @@ namespace UI
                 MessageBox.Show("请至少选择一张图片作为参考图像");
                 return;
             }
-            int standard_width = picInfo[referenceImage].width;
-            int standard_height = picInfo[referenceImage].height;
-            for (int i = 0; i < tot; i++)
+            int standard_width = MainInfo.picInfo[referenceImage].width;
+            int standard_height = MainInfo.picInfo[referenceImage].height;
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
-                    if(picInfo[path_name[i]].width!=standard_width||picInfo[path_name[i]].height!=standard_height)
+                    if (MainInfo.picInfo[MainInfo.path_name[i]].width != standard_width || MainInfo.picInfo[MainInfo.path_name[i]].height != standard_height)
                     {
                         MessageBox.Show("所选图像与参考图像尺寸不一致，无法进行全参考排序");
                         return;
                     }
                 }
             }
-
-            progress = 0;
-            int id = 0;
-            Thread progressThread = new Thread(progress_thread);
-            progressThread.IsBackground = true;
-            progressThread.Start();
-            sortObject[] originArray = new sortObject[picNum];
-            sortObject[] sortedArray = new sortObject[picNum];
-            for (int i = 0; i < tot; i++)
-            {
-                if (selected[i])
-                {
-                    //图像全参考评分
-                    if (!picInfo[path_name[i]].state_full || previous_pic != referenceImage)
-                    {
-                        if (SettingInfo.image_sort_full == "PSNR")
-                        {
-                            picInfo[path_name[i]].grade_full = picInfo[path_name[i]].psnr(picInfo[referenceImage]);
-                        }
-                        else
-                        {
-                            picInfo[path_name[i]].grade_full = picInfo[path_name[i]].LBPdiffer(picInfo[referenceImage]);
-                        }
-                        picInfo[path_name[i]].state_full = true;
-                    }
-                    originArray[id] = new sortObject(picInfo[path_name[i]].grade_full, path_name[i], name[i]);
-                    sortedArray[id++] = new sortObject(picInfo[path_name[i]].grade_full, path_name[i], name[i]);
-                    progress = 1000 * id / picNum;
-                }
-            }
             previous_pic = referenceImage;
-            Array.Sort(sortedArray, new sortObjectComparer()); //图片排序调用
-
-            SortingResult sr = new SortingResult(referenceImage, picNum, originArray, sortedArray);
+            SortingResult sr = new SortingResult(referenceImage);
             sr.Show();
         }
 
         //图片无参考清理
-        private void imageClear_none_Click(object sender, EventArgs e)
+        private void imageClear_NR_Click(object sender, EventArgs e)
         {
             imageClearPanel.Visible = false;
-            if (tot == 0)
+            if (MainInfo.tot == 0)
             {
                 MessageBox.Show("请添加至少一张图片");
                 return;
             }
-            ClearSetting cs = new ClearSetting(this);
+            ClearSetting_NR cs = new ClearSetting_NR(this);
             cs.Show();
         }
 
         //图片全参考清理
-        private void imageClear_full_Click(object sender, EventArgs e) 
+        private void imageClear_FR_Click(object sender, EventArgs e) 
         {
             imageClearPanel.Visible = false;
             int picNum = 0;
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
                     picNum++;
                 }
@@ -996,20 +924,20 @@ namespace UI
                 MessageBox.Show("请至少选择一张图片作为参考图像");
                 return;
             }
-            int standard_width = picInfo[referenceImage].width;
-            int standard_height = picInfo[referenceImage].height;
-            for (int i = 0; i < tot; i++)
+            int standard_width = MainInfo.picInfo[referenceImage].width;
+            int standard_height = MainInfo.picInfo[referenceImage].height;
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                if (selected[i])
+                if (MainInfo.selected[i])
                 {
-                    if (picInfo[path_name[i]].width != standard_width || picInfo[path_name[i]].height != standard_height)
+                    if (MainInfo.picInfo[MainInfo.path_name[i]].width != standard_width || MainInfo.picInfo[MainInfo.path_name[i]].height != standard_height)
                     {
                         MessageBox.Show("所选图像与参考图像尺寸不一致，无法进行全参考排序");
                         return;
                     }
                 }
             }
-            ClearSetting cs = new ClearSetting(this, referenceImage);
+            ClearSetting_FR cs = new ClearSetting_FR(this, referenceImage);
             cs.Show();
         }
 
@@ -1017,12 +945,12 @@ namespace UI
         public void delete()
         {
             picturePanel p;
-            int i = 0, k = tot - 1;
+            int i = 0, k = MainInfo.tot - 1;
             for (; i <= k; i++)
             {
                 if (imageToDelete[i])
                 {
-                    picInfo.Remove(path_name[i]);
+                    MainInfo.picInfo.Remove(MainInfo.path_name[i]);
                     if (previous_panel_temp == i)
                     {
                         previous_panel_temp = -1;
@@ -1037,7 +965,7 @@ namespace UI
                         }
                         else
                         {
-                            picInfo.Remove(path_name[k]);
+                            MainInfo.picInfo.Remove(MainInfo.path_name[k]);
                             if(previous_panel_temp == k)
                             {
                                 previous_panel_temp = -1;
@@ -1054,15 +982,15 @@ namespace UI
                     {
                         imageToDelete[i] = false;
                         imageToDelete[k] = true;
-                        path_name[i] = path_name[k];
-                        selected[i] = selected[k];
-                        if(selected[i])
+                        MainInfo.path_name[i] = MainInfo.path_name[k];
+                        MainInfo.selected[i] = MainInfo.selected[k];
+                        if(MainInfo.selected[i])
                         {
-                            ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
+                            ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
                         }
                         else
                         {
-                            ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
+                            ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
                         }
                         if (previous_panel_temp == k)
                         {
@@ -1070,39 +998,39 @@ namespace UI
                             previous_panel_temp = i;
                             add_mark(i);
                         }
-                        path_name[k--] = null;
+                        MainInfo.path_name[k--] = null;
 
-                        p = (picturePanel)result_show.GetControlFromPosition(i % 5, i / 5);
-                        p.init(picInfo[path_name[i]].image, picInfo[path_name[i]].name);
+                        p = (picturePanel)resultPanel.GetControlFromPosition(i % 5, i / 5);
+                        p.init(MainInfo.picInfo[MainInfo.path_name[i]].image, MainInfo.picInfo[MainInfo.path_name[i]].name);
                     }
                 }
             }
-            while (tot > 0 && imageToDelete[tot - 1])
+            while (MainInfo.tot > 0 && imageToDelete[MainInfo.tot - 1])
             {
-                result_show.Controls[tot - 1].Dispose();
-                tot--;
+                resultPanel.Controls[MainInfo.tot - 1].Dispose();
+                MainInfo.tot--;
             }
-            while (result_show.RowCount > 1 && (result_show.RowCount - 2) * 5 >= tot)
+            while (resultPanel.RowCount > 1 && (resultPanel.RowCount - 2) * 5 >= MainInfo.tot)
             {
-                result_show.RowStyles.RemoveAt(result_show.RowCount - 1);
-                result_show.RowCount--;
+                resultPanel.RowStyles.RemoveAt(resultPanel.RowCount - 1);
+                resultPanel.RowCount--;
             }
-            if(tot == 0)
+            if(MainInfo.tot == 0)
             {
-                result_show.ColumnCount = 1;
+                resultPanel.ColumnCount = 1;
             }
         }
 
         //删除图片按钮点击事件
         private void deleteImage_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < tot; i++)
+            for (int i = 0; i < MainInfo.tot; i++)
             {
-                imageToDelete[i] = selected[i];
-                if (selected[i])
+                imageToDelete[i] = MainInfo.selected[i];
+                if (MainInfo.selected[i])
                 {
-                    selected[i] = false;
-                    ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
+                    MainInfo.selected[i] = false;
+                    ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
                 }
             }
             delete();
@@ -1114,23 +1042,23 @@ namespace UI
             if (!select_all)
             {
                 select_all = true;
-                for (int i = 0; i < tot; i++)
+                for (int i = 0; i < MainInfo.tot; i++)
                 {
                     if(i == previous_panel_temp)
                     {
                         continue;
                     }
-                    selected[i] = true;
-                    ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
+                    MainInfo.selected[i] = true;
+                    ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
                 }
             }
             else
             {
                 select_all = false;
-                for (int i = 0; i < tot; i++)
+                for (int i = 0; i < MainInfo.tot; i++)
                 {
-                    selected[i] = false;
-                    ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
+                    MainInfo.selected[i] = false;
+                    ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
                 }
             }
         }
@@ -1146,43 +1074,25 @@ namespace UI
             settingForm.Show();
         }
 
-        private void resetClearPanel()
-        {
-            imageSortPanel.Visible = !imageSortPanel.Visible;
-            imageClearPanel.Visible = false;
-        }
-
-        private void resetComparePanel()
-        {
-            imageClearPanel.Visible = false;
-            imageSortPanel.Visible = false;
-        }
-
-        private void resetCompressPanel()
-        {
-            imageClearPanel.Visible = !imageClearPanel.Visible;
-            imageSortPanel.Visible = false;
-        }
-
         private void resetSortPanel()
         {
             imageClearPanel.Visible = false;
             imageSortPanel.Visible = false;
         }
 
-        private void result_show_Resize(object sender, EventArgs e)
+        private void resultPanel_Resize(object sender, EventArgs e)
         {
             TableLayoutRowStyleCollection rowstyles;
-            rowstyles = result_show.RowStyles;
+            rowstyles = resultPanel.RowStyles;
             foreach (RowStyle style in rowstyles)
             {
                 style.SizeType = SizeType.Absolute;
-                style.Height = result_show.Width / 5;
+                style.Height = resultPanel.Width / 5;
             }
             if (previous_panel_temp != -1)
             {
-                int x = result_show.Controls[previous_panel_temp].Size.Width;
-                int y = result_show.Controls[previous_panel_temp].Size.Height;
+                int x = resultPanel.Controls[previous_panel_temp].Size.Width;
+                int y = resultPanel.Controls[previous_panel_temp].Size.Height;
                 referenceMark.Location = new Point(x - 25, y - 25);
             }
         }
@@ -1197,6 +1107,11 @@ namespace UI
             {
                 shift_flag = true;
             }
+            if (e.KeyData == Keys.Escape)
+            {
+                imageSortPanel.Visible = false;
+                imageClearPanel.Visible = false;
+            }
         }
 
         private void MainForm_KeyUp(object sender, KeyEventArgs e)
@@ -1210,27 +1125,46 @@ namespace UI
                 shift_flag = false;
                 previous_select = -1;
             }
-            if (e.Control && e.KeyCode == Keys.A)
+            if (e.Control)
             {
-                if (tot > 0)
+                if (e.KeyCode == Keys.A)
                 {
-                    select_all = true;
-                }
-                for (int i = 0; i < tot; i++)
-                {
-                    if(i == previous_panel_temp)
+                    if (MainInfo.tot > 0)
                     {
-                        continue;
+                        select_all = true;
                     }
-                    selected[i] = true;
-                    ((Panel)result_show.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
+                    for (int i = 0; i < MainInfo.tot; i++)
+                    {
+                        if (i == previous_panel_temp)
+                        {
+                            continue;
+                        }
+                        MainInfo.selected[i] = true;
+                        ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = selected_color;
+                    }
+                }
+                else if (e.KeyCode == Keys.Q)
+                {
+                    if (MainInfo.tot > 0)
+                    {
+                        select_all = false;
+                    }
+                    for (int i = 0; i < MainInfo.tot; i++)
+                    {
+                        if (i == previous_panel_temp)
+                        {
+                            continue;
+                        }
+                        MainInfo.selected[i] = false;
+                        ((Panel)resultPanel.GetControlFromPosition(i % 5, i / 5)).BackColor = unselected_color;
+                    }
                 }
             }
         }
 
         private void changeSize(object sender, System.Windows.Forms.MouseEventArgs e)
         {
-            if (control_flag && result_show.Bounds.Contains(e.X,e.Y))
+            if (control_flag && resultPanel.Bounds.Contains(e.X,e.Y))
             {
                 if(e.Delta<0)
                 {
@@ -1248,22 +1182,22 @@ namespace UI
                     }
                     sizeF--;
                 }
-                result_show.Width = splitContainer2.Panel1.Width / sizeF * 5;
+                resultPanel.Width = splitContainer2.Panel1.Width / sizeF * 5;
                 if (sizeF != 5)
                 {
-                    result_show.Width += sizeF * 5;
+                    resultPanel.Width += sizeF * 5;
                 }
                 TableLayoutRowStyleCollection rowstyles;
-                rowstyles = result_show.RowStyles;
+                rowstyles = resultPanel.RowStyles;
                 foreach (RowStyle style in rowstyles)
                 {
                     style.SizeType = SizeType.Absolute;
-                    style.Height = result_show.Width / 5;
+                    style.Height = resultPanel.Width / 5;
                 }
                 if (previous_panel_temp != -1)
                 {
-                    int x = result_show.Controls[previous_panel_temp].Size.Width;
-                    int y = result_show.Controls[previous_panel_temp].Size.Height;
+                    int x = resultPanel.Controls[previous_panel_temp].Size.Width;
+                    int y = resultPanel.Controls[previous_panel_temp].Size.Height;
                     referenceMark.Location = new Point(x - 25, y - 25);
                 }
             }
@@ -1297,16 +1231,16 @@ namespace UI
 
         private void add_mark(int i)
         {
-            result_show.Controls[i].Controls.Add(referenceMark);
-            result_show.Controls[i].Controls[2].BringToFront();
-            int x = result_show.Controls[i].Size.Width;
-            int y = result_show.Controls[i].Size.Height;
+            resultPanel.Controls[i].Controls.Add(referenceMark);
+            resultPanel.Controls[i].Controls[2].BringToFront();
+            int x = resultPanel.Controls[i].Size.Width;
+            int y = resultPanel.Controls[i].Size.Height;
             referenceMark.Location = new Point(x - 25, y - 25);
         }
 
         private void delete_mark(int i)
         {
-            result_show.Controls[i].Controls.Remove(referenceMark);
+            resultPanel.Controls[i].Controls.Remove(referenceMark);
         }
     }
 }

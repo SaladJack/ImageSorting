@@ -1,4 +1,4 @@
-﻿namespace UI
+﻿namespace HVS
 {
     partial class SortingResult
     {
@@ -32,9 +32,6 @@
             this.afterSortingHint = new System.Windows.Forms.Label();
             this.beforeSortingPanel = new System.Windows.Forms.TableLayoutPanel();
             this.afterSortingPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.hint = new System.Windows.Forms.Label();
-            this.referenceImage = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.referenceImage)).BeginInit();
             this.SuspendLayout();
             // 
             // beforeSortingHint
@@ -83,32 +80,11 @@
             this.afterSortingPanel.Size = new System.Drawing.Size(920, 230);
             this.afterSortingPanel.TabIndex = 3;
             // 
-            // hint
-            // 
-            this.hint.AutoSize = true;
-            this.hint.Font = new System.Drawing.Font("微软雅黑", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.hint.Location = new System.Drawing.Point(1020, 120);
-            this.hint.Name = "hint";
-            this.hint.Size = new System.Drawing.Size(0, 31);
-            this.hint.TabIndex = 4;
-            // 
-            // referenceImage
-            // 
-            this.referenceImage.ErrorImage = null;
-            this.referenceImage.InitialImage = null;
-            this.referenceImage.Location = new System.Drawing.Point(970, 165);
-            this.referenceImage.Name = "referenceImage";
-            this.referenceImage.Size = new System.Drawing.Size(300, 300);
-            this.referenceImage.TabIndex = 5;
-            this.referenceImage.TabStop = false;
-            // 
             // SortingResult
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1504, 735);
-            this.Controls.Add(this.referenceImage);
-            this.Controls.Add(this.hint);
             this.Controls.Add(this.afterSortingPanel);
             this.Controls.Add(this.beforeSortingPanel);
             this.Controls.Add(this.afterSortingHint);
@@ -117,9 +93,9 @@
             this.MinimumSize = new System.Drawing.Size(1520, 774);
             this.Name = "SortingResult";
             this.Text = "排序结果";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SortingResult_Load);
             this.Resize += new System.EventHandler(this.SortingResult_Resize);
-            ((System.ComponentModel.ISupportInitialize)(this.referenceImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,7 +107,5 @@
         private System.Windows.Forms.Label afterSortingHint;
         private System.Windows.Forms.TableLayoutPanel beforeSortingPanel;
         private System.Windows.Forms.TableLayoutPanel afterSortingPanel;
-        private System.Windows.Forms.Label hint;
-        private System.Windows.Forms.PictureBox referenceImage;
     }
 }
